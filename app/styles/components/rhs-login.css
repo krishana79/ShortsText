@@ -1,0 +1,775 @@
+.LogSd_rhs, .LogSd_rhs * {
+    box-sizing: border-box;
+}
+.LogSd-inp::-webkit-input-placeholder,.contry-srch_inp::-webkit-input-placeholder {
+    opacity: .7
+}
+
+.LogSd-inp:-ms-input-placeholder,.contry-srch_inp:-ms-input-placeholder {
+    opacity: .7
+}
+
+.LogSd-inp::placeholder,.contry-srch_inp::placeholder {
+    opacity: .7
+}
+
+.LogSd_frm-lbl a {
+    color: var(--vj-cl-lgn21);
+    text-decoration: underline
+}
+
+.LogSd_frm-lbl a:hover {
+    text-decoration: none
+}
+
+.Lgn_pg {
+    background-color: var(--vj-cl-lgn1);
+    padding: 0!important
+}
+
+.LogSd_wr-cnt {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    width: 100%
+}
+
+.LogSd_wr {
+    background: var(--vj-cl-lgn1);
+    max-width: 520px;
+    margin: auto;
+    border-radius: 0;
+    box-shadow: rgba(0,0,0,.1) 0 0 6px;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh
+}
+
+.LogSd_wr .row {
+    margin: 0
+}
+
+.LogSd_ttl1 {
+    display: inline-block;
+    float: left;
+    margin: 0 0 5px;
+    padding: 0;
+    color: #000;
+    width: 100%;
+    font-weight: 700;
+    font-size: 30px
+}
+ 
+ 
+
+
+
+
+
+.LogSd_logo-wr {
+    padding: 0 30px 15px;
+    display: inline-block;
+    width: 100%;
+    text-align: center
+}
+ 
+
+.LogSd_logo .vj_icn.vj_logo-ndtv {
+    color: var(--vj-cl-lgn9);
+    font-size: 100px;
+    float: none;
+    height: 26px;
+    width: 1em;
+}
+.LogSd_txt-wr {
+    margin: 0;
+    display: inline-block;
+    width: 100%;
+}
+.LogSd_txt {
+    color: var(--vj-cl-lgn2);
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+}
+.LogSd_logo-wr, .LogSd_txt, .SdPnl_tab-wr {
+    text-align: center;
+}
+.LogSd_frm {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-size: 14px;
+}
+.LogSd_frm-col label {
+    font-weight: 500;
+    margin: 0 0 8px 0;
+    display: block
+}
+.LogSd_err-txt,.LogSd_otp-txt {
+    font-size: 12px;
+    text-align: left;
+    margin: 0 0 16px;
+    color: var(--vj-cl-lgn2);
+    opacity: .7;
+    float: left
+}
+
+.LogSd_err-txt {
+    color: var(--vj-cl-lgn2);
+    margin-top: -10px
+}
+.LogSd_frm-cn {
+    display: inline-flex;
+    width: 100%;
+    border: 1px solid var(--vj-cl-lgn3);
+    border-radius: 6px;
+    padding: 0;
+    margin: 0 0 8px;
+    transition: box-shadow .5sease 0s;
+    background: var(--vj-cl-lgn8);
+    position: relative;
+}
+.LogSd_frm-col.focused .LogSd_frm-cn {
+    box-shadow: rgba(0,0,0,.1) 0 0 5px 3px
+}
+.LogSd_icn {
+    width: 50px;
+    font-size: 20px;
+    border-right: 1px dotted var(--vj-cl-lgn3);
+    padding-right: 10px;
+    padding-left: 12px;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 12px;
+    padding-top: 0;
+    overflow: hidden;
+    justify-content: flex-start;
+    height: 50px;
+    position: relative;
+}
+.LogSd_eml-icn, .LogSd_ph-icn {
+    color: var(--vj-cl-lgn2);
+    position: absolute;
+    transform: translate(0, -45%);
+    top: 50%;
+    transition: all .4scubic-bezier(.37,.15,.32,.94) 0s;
+    margin-top: 2px;
+}
+.LogSd_inp label {
+    width: 100%;
+    display: block;
+    font-size: 11px;
+    color: #b9b5be;
+}
+.LogSd_eml-col .LogSd_ph-icn {
+    top: -42px;
+}
+.LogSd_eml-icn {
+    top: 60px;
+}
+.LogSd_eml-col .LogSd_eml-icn {
+    top: 50%;
+}
+.LogSd_inp {
+    text-align: left;
+    width: 100%;
+}
+.LogSd_ph-cnt {
+    display: flex;
+    align-items: center;
+}
+.LogSd_cntry-code {
+    float: left;
+    margin: 0;
+    padding: 3px 0;
+    position: relative;
+    font-weight: 600;
+    font-size: 14px;
+    top: 0;
+    left: 0;
+    border-right: 1px solid var(--vj-cl-lgn3);
+    padding-right: 10px;
+    line-height: 19px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: var(--vj-cl-lgn2);
+    opacity: .7;
+    z-index: 90;
+}
+
+.LogSd-inp {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    font-weight: 500;
+    outline: 0;
+    background: 0 0;
+    height: 50px;
+    border-radius: 6px;
+    color: var(--vj-cl-lgn2)
+}
+ 
+
+.LogSd-inp:-webkit-autofill,.LogSd-inp:autofill {
+    background-color: var(--vj-cl-lgn8)!important;
+    box-shadow: var(--vj-cl-lgn8) 0 0 0 1000px inset!important;
+    border-radius: 0 6px 6px 0
+}
+
+.LogSd-inp::-webkit-inner-spin-button,.LogSd-inp::-webkit-outer-spin-button {
+    appearance: none
+}  
+.LogSd_cntry-code+.LogSd-inp {
+    padding-left: 10px;
+}
+.vld {
+    width: 22px;
+    height: 22px;
+    background-color: #0b9d0b;
+    display: inline-flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 50%;
+    right: 10px;
+    top: 12px;
+}
+.in-vld {
+    background-color: red;
+    font-size: 10px;
+}
+
+.LogCty_drop {
+    display: none;
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: calc(100% + 2px);
+    left: -1px;
+    top: 56px;
+    z-index: 10;
+    background: var(--vj-cl-lg1);
+    border: 1px solid var(--vj-cl-lgn3);
+    border-radius: 6px;
+    animation: .5sease 0s 1 normal forwards running fadeIn;
+    opacity: 0;
+}
+.LogCty_drop:before {
+    border: solid transparent;
+    border-width: 12px;
+    border-bottom-color: var(--vj-cl-lgn3);
+    top: -24px;
+    content: "";
+    height: 8px;
+    left: 70px;
+    margin-left: -4px;
+    position: absolute;
+    width: 0;
+    z-index: 9
+}
+
+.LogCty_drop:after {
+    border: solid transparent;
+    border-width: 12px;
+    border-bottom-color: var(--vj-cl-lg1);
+    top: -22px;
+    content: "";
+    height: 8px;
+    left: 70px;
+    margin-left: -4px;
+    position: absolute;
+    width: 0;
+    z-index: 9
+}
+
+.LogCty_drop-ul::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 8px;
+    overflow: hidden
+}
+.LogCty-srch {
+    display: inline-block;
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 10px;
+}
+.LogCty-srch_cn {
+    display: inline-block;
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.LogCty-srch_inp {
+    background-color: var(--vj-cl-lgn13);
+    width: 100%;
+    border: 0;
+    padding: 15px 20px 14px 42px;
+    color: var(--vj-cl-lgn2);
+    border-radius: 30px;
+}
+.LogCty-srch_btn {
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    background: 0 0;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    font-size: 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--vj-cl-lgn2);
+}
+.LogCty-srch_cls {
+    position: absolute;
+    right: 20px;
+    top: 16px;
+    font-size: 10px;
+    display: none;
+}
+.LogCty_drop-ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 250px;
+    overflow-y: auto;
+}
+
+.LogCty_drop-li {
+    display: inline-flex;
+    margin: 0;
+    padding: 10px 15px;
+    border-top: 1px solid var(--vj-cl-lgn3);
+    width: 100%;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color .4s linear;
+    color: var(--vj-cl-lgn2)
+}
+
+.LogCty_drop-li:hover {
+    background: var(--vj-cl-CounCd1)
+}
+.contry-nm {
+    flex: 1;
+    margin: 0;
+    font-weight: 600;
+}
+.contry-cd {
+    width: 50px;
+    text-align: right;
+    padding-right: 4px;
+}
+.country-code-on .LogCty_drop {
+    display: block
+}
+.LogSd_err-txt, .LogSd_otp-txt {
+    font-size: 12px;
+    text-align: left;
+    margin: 0 0 16px;
+    color: var(--vj-cl-lgn2);
+    opacity: .7;
+    float: left;
+}
+.LogSd_btn-wr {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.LogSd_sub-btn {
+    background-color: #ca1010;
+    color: #fff;
+    border: 0;
+    width: 100%;
+    padding: 6px 14px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    height: 46px;
+    transition: all .4s cubic-bezier(.37,.15,.32,.94) 0s
+}
+
+.LogSd_sub-btn button:hover {
+    background: #d80303
+}
+.LogSd_sub-btn:disabled, .LogSd_sub-btn[disabled] {
+    background-color: rgb(0, 0, 0, .1);
+    color: var(--vj-cl-lgn11);
+}
+
+.LogSd_frm-lbl {
+    margin: 0 0 15px 0;
+    display: block
+}
+
+.LogSd_frm-lbl span {
+    font-weight: 600
+}
+.loader .lds-ellipsis {
+    display: inline-block
+}
+
+.lds-ellipsis {
+    display: none;
+    position: relative;
+    width: 40px;
+    height: 46px;
+    margin-left: -40px
+}
+
+.lds-ellipsis div {
+    position: absolute;
+    top: 11px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0,1,1,0)
+}
+
+.lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 .6s infinite
+}
+
+.lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 .6s infinite
+}
+
+.lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 .6s infinite
+}
+
+.lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 .6s infinite
+}
+
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1)
+    }
+
+    100% {
+        transform: scale(0)
+    }
+}
+
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0,0)
+    }
+
+    100% {
+        transform: translate(24px,0)
+    }
+}
+
+ 
+ 
+
+.LogSd_sep {
+    position: relative;
+    padding: 10px 0 10px;
+    display: block;
+    text-align: center
+}
+
+.LogSd_sep::before {
+    content: "";
+    width: 100%;
+    background: var(--vj-cl-lgn3);
+    height: 1px;
+    position: absolute;
+    left: 0;
+    top: 50%
+}
+
+.LogSd_sep span {
+    background: var(--vj-cl-lgn1);
+    padding: 4px 10px;
+    display: inline-block;
+    position: relative;
+    color: var(--vj-cl-lgn4)
+}
+
+.LogSd_wth {
+    display: inline-flex;
+    margin: 0 0 15px;
+    flex-wrap: wrap;
+    width: 100%
+}
+.LogSd_wth-cir {
+    width: 100%;
+    height: auto;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 6px;
+    padding: 0;
+    overflow: hidden;
+}
+.LogSd_wth-cir {
+    width: 100%;
+    height: 100%;
+    background: var(--vj-cl-lgn1);
+    border-radius: 6px;
+    text-align: left;
+    padding: 0 12px;
+    font-size: 12px;
+    line-height: 16px;
+    height: 40px;
+    border: 2px solid var(--vj-cl-lgn3);
+}
+.LogSd_wth-cir a {
+    color: var(--vj-cl-lgn2)
+}
+
+.LogSd_sig-icn {
+    width: 30px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 7px;
+    font-size: 20px;
+    color: var(--vj-cl-lgn9)
+}
+
+.LogSd_wth-cir:last-child {
+    margin-right: 0
+}
+
+.vj_fb-lg {
+    color: #1877f2
+}
+
+ 
+
+.LogSd_wth-cn {
+    display: inline-flex;
+    align-items: center;
+    width: 176px;
+}
+
+.LogSd_fb svg {
+    height: 20px
+}
+
+.LogSd_trm {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    color: var(--vj-cl-lgn2);
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+}
+
+.LogSd_trm-lnk {
+    color: #95929c;
+    text-decoration: underline
+}
+
+.LogSd_trm-lnk:hover {
+    text-decoration: none
+}
+
+
+.LogSd_nl {
+    display: inline-flex;
+    float: left;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin-top: 15px
+}
+
+.LogSd_btm-line {
+    display: inline-block;
+    width: 100%
+}
+
+.LogSd_otp-vrfy {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 5px
+}
+
+.LogSd_otp-col {
+    display: inline-flex;
+    float: left;
+    width: 40px;
+    height: 38px;
+    margin-right: 4px;
+    align-items: center
+}
+
+.LogSd_otp-inp {
+    border: 2px solid var(--vj-cl-lgn3);
+    padding: 8px 4px;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    background: var(--vj-cl-lgn10);
+    color: var(--vj-cl-lgn2)
+}
+
+.LogSd_otp-col:last-child {
+    margin-right: 0
+}
+input.log-nws[type=checkbox] {
+    height: 0;
+    width: 0
+}
+
+input.log-nws[type=checkbox]+label {
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    color: #9e9e9e;
+    transition: color 250ms cubic-bezier(.4,0,.23,1) 0s;
+    width: auto
+}
+
+input.log-nws[type=checkbox]+label>span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    width: 22px;
+    height: 22px;
+    background: 0 0;
+    border: 2px solid #9e9e9e;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 250ms cubic-bezier(.4,0,.23,1) 0s
+}
+
+input.log-nws[type=checkbox]+label,input.log-nws[type=checkbox]+label:hover {
+    color: #888
+}
+
+input.log-nws[type=checkbox]:focus+label>span,input[type=checkbox].log-nws+label:hover>span {
+    background: rgba(255,255,255,.1)
+}
+
+input.log-nws[type=checkbox]:checked+label {
+    color: var(--vj-cl-lgn2)
+}
+
+input.log-nws[type=checkbox]:checked+label>span {
+    border: 11px solid rgb(57 57 55)
+}
+
+input.log-nws[type=checkbox]:checked+label>span::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 8px;
+    display: inline-block;
+    transform: rotate(45deg);
+    height: 12px;
+    width: 4px;
+    border-bottom: 3px solid rgb(255 255 255);
+    border-right: 3px solid rgb(255 255 255);
+    box-sizing: content-box
+}
+@media (min-width: 992px) {
+    .LogSd_logo .vj_icn.vj_logo-ndtv {
+        font-size:140px;
+        float: none
+    }
+    .LogSd_logo-wr {
+        padding: 0 0 20px;
+    }
+    .LogSd_txt {
+        margin-bottom: 20px;
+        line-height: 21px;
+    }
+   
+    .LogSd_wth {
+        margin-bottom: 20px;
+    }
+     
+    .LogSd_wr-cnt {
+        padding: 20px 15px
+    }
+    .LogSd_sep {
+        padding: 15px 0 15px
+    }
+    .LogSd_sub-btn button {
+        padding: 7px 14px;
+        height: 46px
+    }
+    .LogSd_wth-cir a {
+        padding: 0 12px
+    }
+    .LogSd_otp-col {
+        display: inline-flex;
+        float: left;
+        width: 50px;
+        height: 47px;
+        margin-right: 8px;
+        align-items: center
+    }
+}
+@media (min-width: 768px) {
+    .LogSd_logo .vj_icn.vj_logo-ndtv {
+        font-size:140px;
+        float: none;
+        color: var(--vj-cl-lgn2);
+        height: auto;
+        max-width: 140px
+    }
+    .lds-ellipsis div {
+        top: 11px;
+    }
+    .LogSd_wth-cn {
+        width: 198px;
+    }
+    .LogSd_wth-cir {
+        font-size: 14px;
+        height: 50px;
+    }
+    
+}
+/* max width  */
+@media screen and (max-width: 767px) {
+    .LogSd_logo .vj_icn.vj_logo-ndtv {
+        height: 18px;
+    }
+    
+} 
+

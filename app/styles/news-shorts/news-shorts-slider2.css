@@ -1,0 +1,131 @@
+/*--====== Light ======--*/
+:root {
+    --vj-cl-NstSlH: #ffffff;
+    --vj-cl-NstSlH1: #000000;
+    --vj-cl-NstSlH2: #4373d2;
+    --vj-cl-NstSlH3: #b7c7ce;
+}
+
+/*--====== Dark ======--*/
+:root .day_night {
+    --vj-cl-NstSlH: #ffffff;
+    --vj-cl-NstSlH1: #000000;
+    --vj-cl-NstSlH2: #4373d2;
+    --vj-cl-NstSlH3: #b7c7ce;
+}
+
+/*--====== Dark Mode======--*/
+@media (prefers-color-scheme:dark) {
+
+    /*--====== Dark ======--*/
+    :root {
+        --vj-cl-NstSlH: #ffffff;
+        --vj-cl-NstSlH1: #000000;
+        --vj-cl-NstSlH2: #4373d2;
+        --vj-cl-NstSlH3: #b7c7ce;
+    }
+
+    /*--====== Light ======--*/
+    :root .day_night {
+        --vj-cl-NstSlH: #ffffff;
+        --vj-cl-NstSlH1: #000000;
+        --vj-cl-NstSlH2: #4373d2;
+        --vj-cl-NstSlH3: #b7c7ce;
+    }
+}
+
+.NstSlHr_rw .swiper-pagination-bullet {
+    background: var(--vj-cl-NstSlH);
+    opacity: 0.4;
+}
+
+.NstSlHr_rw .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+.NstSlHr_rw {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+.NstSlHr_ul {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.NstSlHr_li {
+    align-items: flex-start;
+    background-color: var(--vj-cl-NstSlH1);
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.NstSlHr_img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.grid-container {
+    background-color: #000;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    height: calc(100% - 67px);
+    left: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.swiper-pagination.NstSlHr_pgn {
+    /* background: #2c383d; */
+    bottom: 40px;
+    display: flex;
+    justify-content: center;
+    left: 50%;
+    margin: 0 0 0 -60px;
+    position: absolute;
+    top: auto;
+    width: 120px;
+}
+
+.swiper-pagination.NstSlHr_pgn .swiper-pagination-progressbar-fill {
+    background: #4373d2;
+}
+
+.swiper-pagination.NstSlHr_pgn1 {
+    background: #b7c7ce;
+    bottom: 75px;
+    display: flex;
+    justify-content: center;
+    left: 50%;
+    margin: 0 0 0 -60px;
+    position: absolute;
+    top: auto;
+    width: 120px;
+}
+
+.swiper-pagination.NstSlHr_pgn1 .swiper-pagination-progressbar-fill {
+    background: #4373d2;
+}
+
+@media (min-width:560px) {
+
+    .NstSlHr_rw {
+        border-radius: 12px;
+    }
+}

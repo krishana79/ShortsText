@@ -1,0 +1,134 @@
+.sid-nav_wrp {
+    display: inline-block;
+    float: left;
+    overflow-y: auto;
+    padding: 10px 0 0;
+    position: relative;
+    width: 100%
+}
+
+.sid-nav .t-icn-nv .vj_icn {
+    margin-top: 24px
+}
+.snv-two {
+    border-bottom: 1px solid var(--vj-cl-rg6);
+    display: inline-block;
+    float: left;
+    padding: 16px 0;
+    width: 100%;
+}
+
+.sid-nav_ul {
+    display: inline-block;
+    padding: 5px 0 0 0;
+    position: relative;
+    width: 100%
+}
+
+.sid-nav_li-ttl {
+    color: var(--vj-cl-lg2);
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .6px;
+    line-height: 21px;
+    margin: 0;
+    padding: 0 0 6px 20px;
+    position: relative;
+    text-transform: capitalize
+}
+
+.sid-nav_li {
+    border-bottom: 1px solid var(--vj-cl-rg6);
+    display: inline-block;
+    float: left;
+    width: 100%
+}
+
+.sid-nav_li:first-child,.sid-nav_li:last-child {
+    border-bottom: 0
+}
+
+.js-srh-opn .sid-nav_li a:hover,
+.js-srh-opn .sid-nav_li a:hover:before,
+.js_sid-nav .sid-nav_li a:focus,
+.js_sid-nav .sid-nav_li a:focus:before,
+.js_sid-nav .sid-nav_li a:hover,.js_sid-nav .sid-nav_li a:hover:before {
+    color: var(--vj-cl-dr)
+}
+
+.sid-nav_sub {
+    display: inline-block;
+    float: left;
+    width: 100%
+}
+
+
+.snv_cn-tg {
+    background: #a43051;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 12px;
+    right: -6px;
+    padding: 1px 4px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 5px
+}
+
+ 
+
+.snv_cn-ul {
+    display: inline-block;
+    float: left;
+    width: 100%
+}
+
+.snv-two .snv_cn-li {
+    display: flex;
+    float: left;
+    width: 50%
+}
+.snv_ic-wrp {
+    background: #1c242b;
+    border-radius: 51px;
+    display: flex;
+    float: left;
+    margin-right: 6px;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.snv_cn-lnk {
+    color: var(--vj-cl-lg1);
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    padding: 11px 0 11px 21px;
+    position: relative;
+    align-items: center
+}
+
+.snv_cn-lnk:hover {
+    color: var(--vj-cl-m)
+}
+
+
+@media only screen and (max-width: 768px) {
+    .snv_cn-lnk .vj_icn {
+        display: inline-block;
+        font-size: 22px;
+        float: left;
+        margin-right: 10px
+    }
+}
+.snv_cn-lnk .vj_icn {
+    color: var(--vj-cl-lg1);
+    font-size: 14px;
+    margin: 0
+}

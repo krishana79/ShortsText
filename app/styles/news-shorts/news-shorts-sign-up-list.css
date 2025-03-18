@@ -1,0 +1,214 @@
+.NstSupLst_ul-wr {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 119px);
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.NstSupLst_ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.NstSupLst_li {
+    background: #313743;
+    padding: 0;
+    position: relative;
+    width: 50%;
+}
+
+.NstSupLst_ul1 {
+    padding: 0 15px;
+}
+
+.NstSupLst_ul1 .NstSupLst_li {
+    background: transparent;
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+.NstSupLst_li-lbl {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 18px;
+    margin-bottom: 5px;
+    text-align: left;
+    width: 100%;
+}
+
+.NstSupLst_inpt {
+    background: #00000054;
+    border: 0;
+    border-radius: 5px;
+    color: #b0b3bb;
+    height: 38px;
+    outline: none;
+    padding: 0 10px;
+    width: 100%;
+}
+
+.NstSupLst_chck {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    border: 1px solid var(--inputBorderColor);
+    border-radius: 5px;
+    padding-left: 15px;
+    margin: 0 1px;
+    font-size: 18px;
+    transition: border-color 150ms ease;
+}
+
+form .page .field input.invalid-input {
+    border-color: var(--errorColor);
+}
+
+.NstSupLst_Crd-cn {
+    width: 100%;
+    padding: 1px;
+}
+
+.NstSupLst_Crd-wr {
+    /* width: 100%; */
+}
+
+/* .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.checkbox-group-legend {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #9c9c9c;
+    text-align: center;
+    line-height: 1.125;
+    margin-bottom: 1.25rem;
+} */
+
+.NstSupLst_chck {
+    display: none;
+    /* clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(100%);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px; */
+}
+
+.NstSupLst_chck:checked+.NstSupLst_tl-wr {
+    box-shadow: inset 0 0 2px rgb(122 197 215 / 30%);
+    background: #59aec3;
+}
+
+.NstSupLst_chck:checked+.NstSupLst_tl-wr:before {
+    transform: scale(1);
+    opacity: 1;
+    background-color: rgba(63, 86, 87, 0.18);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cpolyline points='216 72.005 104 184 48 128.005' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'%3E%3C/polyline%3E%3C/svg%3E");
+    background-size: 9px;
+    border-color: rgb(0 0 0 / 10%);
+    /* border: 0; */
+}
+
+.NstSupLst_chck:checked+.NstSupLst_tl-wr .NstSupLst_icn,
+.NstSupLst_chck:checked+.NstSupLst_tl-wr .NstSupLst_tl {
+    color: #ffffff;
+}
+
+.NstSupLst_chck:focus+.NstSupLst_tl-wr {
+    border-color: #2260ff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
+}
+
+.NstSupLst_chck:focus+.NstSupLst_tl-wr:before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.NstSupLst_tl-wr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 90px;
+    /* border-radius: 0.5rem; */
+    /* border: 2px solid #b5bfd9; */
+    background-color: #4b5365;
+    box-shadow: inset 0 0px 3px rgb(47 51 61 / 10%);
+    transition: 0.15s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.NstSupLst_tl-wr:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #38445dc7;
+    background-color: #69728552;
+    border-radius: 50%;
+    margin-top: -7px;
+    top: 50%;
+    left: 10px;
+    opacity: 1;
+    transform: scale(1);
+    transition: 0.25s ease;
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.NstSupLst_tl-wr:hover {
+    border-color: #2260ff;
+}
+
+.NstSupLst_tl-wr:hover:before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.NstSupLst_icn {
+    transition: 0.375s ease;
+    color: #8b989e;
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 32px;
+}
+
+.NstSupLst_icn svg {
+    /* width: 3rem; */
+    /* height: 3rem; */
+}
+
+.NstSupLst_tl {
+    color: #8b98a3;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    transition: 0.375s ease;
+    text-align: center;
+}

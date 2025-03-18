@@ -1,0 +1,101 @@
+ /*--====== Light ======--*/
+ :root {
+      
+    --vj-cl-NstHrt1: #D22128;
+
+ }
+
+ /*--====== Dark ======--*/
+ :root .day_night {
+    --vj-cl-NstHrt1: #D22128;
+  
+ }
+
+ /*--====== Dark Mode======--*/
+ @media (prefers-color-scheme:dark) {
+
+     /*--====== Dark ======--*/
+     :root {
+    --vj-cl-NstHrt1: #D22128;
+       
+     }
+
+     /*--====== Light ======--*/
+     :root .day_night {
+    --vj-cl-NstHrt1: #D22128;
+      
+     }
+ }
+
+.fill {
+    animation: love .5s linear alternate forwards;
+    stroke: var(--vj-cl-NstHrt1);
+    stroke-width: 5px;
+}
+
+@keyframes love {
+    0% {
+        stroke-dashoffset: 1000;
+        stroke: var(--vj-cl-NstHrt1);
+    }
+
+    50% {
+        stroke-dashoffset: 0;
+        stroke: var(--vj-cl-NstHrt1);
+        fill: var(--vj-cl-NstHrt1);
+        transform: translateY(5px);
+    }
+
+    100% {
+        stroke: transparent;
+        fill: var(--vj-cl-NstHrt1);
+        transform: translateY(0);
+    }
+}
+
+.js-HeartLike , 
+.NstSl_li-vdo .NstEl_icn-wr.NstEl_icn-wr2 .js-HeartLike {
+    
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.NstSl_li-vdo .NstEl_icn-wr .js-HeartLike {
+    font-size: 19px;
+
+}
+
+.js-HeartLike .vj_heart {
+    /* stroke-width: 1px; */
+}
+
+.js-HeartLike .vj_heart.heartscale {
+    /* stroke-width: 0; */
+}
+
+.heartscale {
+    animation: heart-beat .75s alternate forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes heart-beat {
+    0% {
+        transform: scale(1);
+        fill: var(--vj-cl-NstHrt1);
+    }
+
+    25% {
+        transform: scale(1.3);
+        fill: var(--vj-cl-NstHrt1);
+    }
+
+    50% {
+        transform: scale(.95);
+        fill: var(--vj-cl-NstHrt1);
+    }
+
+    100% {
+        transform: scale(1);
+        fill: var(--vj-cl-NstHrt1);
+    }
+}

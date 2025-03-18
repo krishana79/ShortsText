@@ -1,0 +1,25 @@
+.NstSlCol{
+
+}
+.NstSlCol_1 {
+    display: flex;
+    float: left;
+    height: 100vh;
+    justify-content: center;
+    width: 100%;
+
+}
+.NstSlCol_rw{
+    display: flex;
+    float: left;
+    padding: 0;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media (min-width:560px) {
+
+    .NstSlCol_1 {
+        height: calc(100vh - 71px);
+    }
+}

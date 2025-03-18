@@ -1,0 +1,193 @@
+/*--- Day Night Icon wt Animation ---*/
+
+.day_night-wrp {
+    display: inline-block;
+    float: right;
+    padding: 19px 8px;
+    position: relative;
+}
+
+.day_night-lnk {
+    background: rgba(255, 255, 255, 0.13);
+    border: 2px solid #ffffff14;
+    border-radius: 24px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    padding: 3px 3px 4px 4px;
+    position: relative;
+}
+
+.day_night-icn {
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    margin: 0px 0;
+    pointer-events: none;
+}
+
+.fts_drp-nav-lnk .day_night-icn {
+    margin: 4px 0 0;
+}
+
+.day_night-icn input {
+    display: none;
+}
+
+.day_night-icn input+div {
+    border-radius: 50%;
+    width: 21px;
+    height: 21px;
+    position: relative;
+    box-shadow: inset 7px -7px 0 0 #ffffff;
+    -webkit-transform: scale(0.7) rotate(-2deg);
+    transform: scale(0.7) rotate(-2deg);
+    transition: box-shadow .5s ease 0s, -webkit-transform .4s ease .1s;
+    transition: box-shadow .5s ease 0s, transform .4s ease .1s;
+    transition: box-shadow .5s ease 0s, transform .4s ease .1s, -webkit-transform .4s ease .1s;
+}
+
+.fts_drp-nav-li .day_night-icn input+div {
+    box-shadow: inset 7px -7px 0 0 var(--vj-cl-dr);
+}
+
+.day_night-icn input+div:before {
+    content: '';
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: background .3s ease;
+}
+
+.day_night-icn input+div:after {
+    border-radius: 50%;
+    content: '';
+    left: 50%;
+    height: 8px;
+    margin: -4px 0 0 -4px;
+    position: absolute;
+    top: 50%;
+    box-shadow: 0 -18px 0 #ffec85, 0 18px 0 #ffec85, 18px 0 0 #ffec85, -18px 0 0 #ffec85, 13px 13px 0 #ffec85, -13px 13px 0 #ffec85, 13px -13px 0 #ffec85, -13px -13px 0 #ffec85;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    transition: all .3s ease;
+    width: 8px;
+}
+
+
+
+.day_night .day_night-icn input+div {
+    box-shadow: inset 32px -32px 0 0 #fff;
+    -webkit-transform: scale(0.5) rotate(0deg);
+    transform: scale(0.3) rotate(0deg);
+    transition: box-shadow .2s ease 0s, -webkit-transform .3s ease .1s;
+    transition: transform .3s ease .1s, box-shadow .2s ease 0s;
+    transition: transform .3s ease .1s, box-shadow .2s ease 0s, -webkit-transform .3s ease .1s;
+}
+
+.day_night .day_night-icn input+div:before {
+    background: #ffec85;
+    transition: background .3s ease .1s;
+}
+
+.day_night .day_night-icn input+div:after {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    transition: -webkit-transform .5s ease .15s;
+    transition: transform .5s ease .15s;
+    transition: transform .5s ease .15s, -webkit-transform .5s ease .15s;
+}
+
+
+
+/*--====== tool tip start ======--*/
+.m-nv .day_night-wrp.ttp .tip.on-bottom,
+.day_night-wrp.ttp .tip.on-bottom {
+    bottom: auto;
+    left: auto;
+    margin-left: -36px;
+    top: 72px;
+    -webkit-transform: translateY(-11px);
+    transform: translateY(-11px);
+    width: 100px;
+}
+
+/*--====== tool tip ends ======--*/
+
+
+
+
+
+
+
+
+/*--====== Dark Mode ======--*/
+@media (prefers-color-scheme:dark) {
+
+
+    /*--====== Light ======--*/
+    .day_night-icn input+div {
+        box-shadow: inset 32px -32px 0 0 #fff;
+        -webkit-transform: scale(0.5) rotate(0deg);
+        transform: scale(0.3) rotate(0deg);
+        transition: box-shadow .2s ease 0s, -webkit-transform .3s ease .1s;
+        transition: transform .3s ease .1s, box-shadow .2s ease 0s;
+        transition: transform .3s ease .1s, box-shadow .2s ease 0s, -webkit-transform .3s ease .1s;
+    }
+
+    .day_night-icn input+div:before {
+        background: #ffec85;
+        transition: background .3s ease .1s;
+    }
+
+    .day_night-icn input+div:after {
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+        transition: -webkit-transform .5s ease .15s;
+        transition: transform .5s ease .15s;
+        transition: transform .5s ease .15s, -webkit-transform .5s ease .15s;
+    }
+
+
+
+
+    .day_night .day_night-icn input+div {
+        box-shadow: inset 7px -7px 0 0 #ffffff;
+        -webkit-transform: scale(1) rotate(-2deg);
+        transform: scale(0.7) rotate(-2deg);
+    }
+
+    .day_night .day_night-icn input+div:before {
+        background: transparent;
+    }
+
+    .day_night .day_night-icn input+div:after {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+
+
+    .fts_drp-nav-li .day_night-icn input+div {
+        box-shadow: inset 7px -7px 0 0 var(--vj-cl-dr);
+    }
+}
+
+
+
+
+
+
+@media (max-width: 1200px) {
+
+    .header,
+    .brw-nav_txt,
+    .day_night-wrp,
+    .t-icn-ltv {
+        display: none;
+    }
+}

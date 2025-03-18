@@ -1,0 +1,62 @@
+/*--====== Light ======--*/
+:root {
+    --vj-cl-NstAd1: #dfe2e2;
+    --vj-cl-NstAd2: #e8edf1;
+    --vj-cl-NstAd3: #a0a6b1;
+}
+
+/*--====== Dark ======--*/
+:root .day_night {
+    --vj-cl-NstAd1: #262f48;
+    --vj-cl-NstAd2: #151d2a;
+    --vj-cl-NstAd3: #a0a6b1;
+}
+
+/*--====== Dark Mode ======--*/
+@media (prefers-color-scheme:dark) {
+
+    /*--====== Dark ======--*/
+    :root {
+        --vj-cl-NstAd1: #262f48;
+        --vj-cl-NstAd2: #151d2a;
+        --vj-cl-NstAd3: #a0a6b1;
+    }
+
+    /*--====== Light ======--*/
+    :root .day_night {
+        --vj-cl-NstAd1: #dfe2e2;
+        --vj-cl-NstAd2: #e8edf1;
+        --vj-cl-NstAd3: #a0a6b1;
+    }
+}
+
+.NstCrd_ad-wr {
+    display: flex;
+    display: none;
+    flex-direction: column;
+    margin-top: auto;
+    width: 100%;
+}
+
+.NstCrd_ad-cn {
+    background: var(--vj-cl-NstAd2);
+    border: 1px solid var(--vj-cl-NstAd1);
+    display: inline-block;
+    float: left;
+    text-align: center;
+    width: 100%
+}
+
+.NstCrd_ad-cn1 {
+    border: 0;
+    border-top: 1px solid var(--vj-cl-NstAd1);
+}
+
+.NstCrd_ad-tl {
+    color: var(--vj-cl-NstAd3);
+    display: inline-block;
+    float: left;
+    font-size: 10px;
+    line-height: 16px;
+    width: 100%
+}

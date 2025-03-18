@@ -1,0 +1,117 @@
+.snv_cn-hed {
+    background: var(--vj-cl-dr1);
+    min-height: 70px;
+    margin-bottom: 10px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.snv_cn-hed .ndtv-logo {
+    left: 18px;
+    margin-right: 15px
+}
+
+.Nst_lgo-lk {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 16px 4px 0 0;
+}
+.vj_logo-ndtv.Nst_lgo {
+    height: 36px;
+    width: auto;
+}
+.snv_cn-icn {
+    display: inline-block;
+    font-size: 15px;
+    margin: 26px 0
+}
+
+.snv_cn-lnk:hover {
+    color: var(--vj-cl-m)
+}
+.snv_cn-hed .tp_lng .dd-nav {
+    left: 12px;
+    width: 190px
+}
+ /* search */
+ .srh_inp-wrp {
+    float: left;
+    margin-bottom: 21px;
+    padding: 0 20px 0;
+    position: relative;
+    width: 100%
+}
+
+.srh_inp {
+    background: #25282a;
+    border: 0 none;
+    border-radius: 8px;
+    color: var(--vj-cl-lg1);
+    font-size: 14px;
+    font-weight: 500;
+    height: 46px;
+    padding: 11px 39px 12px 40px;
+    position: relative;
+    width: 100%
+}
+
+.srh_inp::placeholder {
+    opacity: .6
+}
+
+.srh_inp::-ms-input-placeholder {
+    opacity: .6
+}
+
+.srh_inp-icn {
+    color: var(--vj-cl-lg1);
+    font-size: 16px;
+    line-height: 13px;
+    left: 31px;
+    position: absolute;
+    top: 15px;
+    width: 17px;
+    z-index: 1
+}
+
+.srh_inp-btn {
+    background: #26282a;
+    border: 0;
+    border-radius: 8px;
+    bottom: 1px;
+    color: var(--vj-cl-lg1);
+    font-size: 11px;
+    line-height: 48px;
+    margin: auto;
+    padding: 0 12px;
+    position: absolute;
+    right: 21px;
+    top: 1px
+}
+@media (max-width: 768px) {
+    .sid-nav .day_night-wrp, .day_night-wrp {
+        display: inline-block;
+    }
+}
+@media (max-width: 1124px) {
+      .header, .m-nv_lf, .t-icn-ltv {
+        display: none;
+    }
+}
+ 
+@media (max-width: 1349px) {
+    .day_night-wrp.ttp .tip.on-bottom:before {
+        margin-left:18px
+    }
+
+    .day_night-wrp.ttp .tip.on-bottom:after {
+        margin-left: 19px
+    }
+
+    .day_night-wrp.ttp .tip.on-bottom {
+        left: 0
+    }
+}

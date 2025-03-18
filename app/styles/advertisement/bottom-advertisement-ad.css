@@ -1,0 +1,38 @@
+/*--====== Light ======--*/
+:root {
+    --vj-cl-NstAdIm1: #d3dde1;
+
+}
+
+/*--====== Dark ======--*/
+:root .day_night {
+    --vj-cl-NstAdIm1: #353e4d;
+
+}
+
+/*--====== Dark Mode ======--*/
+@media (prefers-color-scheme:dark) {
+
+    /*--====== Dark ======--*/
+    :root {
+        --vj-cl-NstAdIm1: #353e4d;
+
+    }
+
+    /*--====== Light ======--*/
+    :root .day_night {
+        --vj-cl-NstAdIm1: #d3dde1;
+
+    }
+
+}
+
+.NstCrd_ad {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.NstCrd_ad-img {
+    margin: 0 auto;
+}

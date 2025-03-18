@@ -1,0 +1,77 @@
+.NsLng_cn {
+    float: right;
+}
+
+.NsLng_wr {
+    cursor: pointer;
+    position: relative;
+}
+
+.NsLng_wr:hover .NsLngNv_cn {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform-origin: top left;
+    -webkit-transform: scale(1, 1);
+}
+
+.NsLng_cn .NsLngNv_cn {
+    background: #131c5d;
+    border: 1px solid #252e71;
+    border-radius: 6px;
+    left: auto;
+    right: -15px;
+    top: 57px;
+    width: 150px;
+    overflow: visible;
+}
+
+.vj_icn.Ns_lng-icn {
+    margin: 0 7px;
+}
+
+.NsLngNv_wr::after {
+    content: none;
+}
+
+.NsLngNv_wr {
+    border: 0;
+    padding: 8px 20px 8px;
+}
+
+.NsLngNv_cn::before,
+.NsLngNv_cn::after {
+    border-bottom: 7px solid #252e71;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    content: '';
+    height: 0;
+    position: absolute;
+    right: 27px;
+    top: -8px;
+    width: 0;
+    z-index: 11;
+}
+
+.Nst_lgo-wr {
+    width: auto;
+}
+
+.NsLngNv_cn::after {
+    border-bottom: 7px solid #131c5d;
+    top: -6.5px;
+}
+
+.NsLngNv_li-lk:hover {
+    color: #dfbdff;
+}
+
+.Nst_lgo-lk {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 16px 4px 0 0;
+}
+.vj_logo-ndtv.Nst_lgo {
+    height: 36px;
+    width: auto;
+}

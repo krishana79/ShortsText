@@ -1,33 +1,29 @@
 import {
   Links,
   Meta,
-  Outlet,
   Scripts,
   ScrollRestoration,
+  MetaFunction,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
+import { rootMeta, defaultMeta } from "../app/utils/MetaUtils";
+import { version } from "../package.json";
 
 import "./tailwind.css";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
 ];
+
+export const meta: MetaFunction = () => {
+  const versionMeta = [{ name: "x-web-version", content: "v" + version }];
+  return [...rootMeta, ...defaultMeta, ...versionMeta];
+};
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
@@ -41,5 +37,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <h1>Hello from App </h1>
+    </>
+  );
 }

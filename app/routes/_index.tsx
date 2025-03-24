@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import Content from "~/components/Content";
 
 // export const meta: MetaFunction = () => {
 //   return [
@@ -8,9 +9,10 @@ import type { MetaFunction } from "@remix-run/node";
 // };
 
 export default function Index() {
+  
   return (
     <>
-      <div>Hello From Index Route</div>
+      <Content />
     </>
   );
 }

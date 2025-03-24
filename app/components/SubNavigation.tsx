@@ -17,52 +17,93 @@ const SubNavigation = () => {
                 <div className="hr-scroll sub-nav_hr-scr">
                   <ul className="hr-scroll__content sub-nv_ul">
                     <li className="sub-nv_li m-nv_li">
-                      <a href="javascript:void(0)" className="VdPg_sub-nav_lnk">
+                      <a // href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
+                        className="VdPg_sub-nav_lnk"
+                      >
                         <span className="LvVd_dot-blk" />
                         लाइव टीवीनया
                       </a>
                     </li>
                     <li className="sub-nv_li m-nv_li">
-                      <a href="javascript:void(0)" className="VdPg_sub-nav_lnk">
+                      <a // href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
+                        className="VdPg_sub-nav_lnk"
+                      >
                         नवीनतम वीडियो
                       </a>
                     </li>
                     <li className="sub-nv_li">
-                      <a href="javascript:void(0)" className="VdPg_sub-nav_lnk">
+                      <a // href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
+                        className="VdPg_sub-nav_lnk"
+                      >
                         शीर्ष वीडियो
                       </a>
                     </li>
                     <li className="sub-nv_li">
-                      <a href="javascript:void(0)" className="VdPg_sub-nav_lnk">
+                      <a // href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
+                        className="VdPg_sub-nav_lnk"
+                      >
                         श्रेणियाँ
                       </a>
                     </li>
                     <li className="sub-nv_li">
                       <a
-                        href="javascript:void(0)"
+                        // href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
                         className="VdPg_sub-nav_lnk  VdPg_sub-nav_act"
                       >
                         Channels
                       </a>
                     </li>
                     <li className="sub-nv_li">
-                      <a href="javascript:void(0)" className="VdPg_sub-nav_lnk">
+                      <a // href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
+                        className="VdPg_sub-nav_lnk"
+                      >
                         Shows
                       </a>
                     </li>
                     <li className="sub-nv_li">
-                      <a href="javascript:void(0)" className="VdPg_sub-nav_lnk">
+                      <a // href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
+                        className="VdPg_sub-nav_lnk"
+                      >
                         NDTV Classics
                       </a>
                     </li>
                     <li className="sub-nv_li">
-                      <a href="javascript:void(0)" className="VdPg_sub-nav_lnk">
+                      <a // href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
+                        className="VdPg_sub-nav_lnk"
+                      >
                         Shot on Samsung
                       </a>
                     </li>
                     <li className="sub-nv_li m-nv_li dd-nav_one dd-nav_hvr res">
                       <a
-                        href="javascript:void(0)"
+                        // href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
                         className="VdPg_sub-nav_lnk res_sub-nav_pop"
                       >
                         जिला{" "}

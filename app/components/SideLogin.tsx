@@ -35,7 +35,13 @@ const SideLogin = () => {
                     {/* Common Content will start here */}
                     <div className="LogSd_comn-wr">
                       <div className="LogSd_logo-wr">
-                        <a className="LogSd_logo" href="javascript:void(0);">
+                        <a
+                          className="LogSd_logo"
+                          // href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                          }}
+                        >
                           <svg
                             className="vj_icn vj_logo-ndtv lg"
                             xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +156,10 @@ const SideLogin = () => {
                                     </button>
                                     <a
                                       className="LogCty-srch_cls"
-                                      href="javascript:void(0);"
+                                      // href="#"
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                      }}
                                     >
                                       <svg className=" vj_icn vj_close">
                                         <use xlinkHref="#vj_close" />
@@ -216,7 +225,11 @@ const SideLogin = () => {
                         <div className="LogSd_wth">
                           {/* Login With Gmail */}
                           <div className="LogSd_wth-cir LogSd_gmail">
-                            <a href="#">
+                            <a // href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                              }}
+                            >
                               <div className="LogSd_wth-cn">
                                 <span className="LogSd_sig-icn">
                                   <svg className="vj_icn vj_Google-Lg">
@@ -229,7 +242,11 @@ const SideLogin = () => {
                           </div>
                           {/* Login With Apple */}
                           <div className="LogSd_wth-cir LogSd_apple">
-                            <a href="#">
+                            <a // href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                              }}
+                            >
                               <div className="LogSd_wth-cn">
                                 <span className="LogSd_sig-icn">
                                   <svg className="vj_icn vj_apple-logo">
@@ -242,7 +259,11 @@ const SideLogin = () => {
                           </div>
                           {/* Login With Facebook */}
                           <div className="LogSd_wth-cir LogSd_fb">
-                            <a href="#">
+                            <a // href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                              }}
+                            >
                               <div className="LogSd_wth-cn">
                                 <span className="LogSd_sig-icn">
                                   <svg className="vj_icn vj_fb-lg">
@@ -257,11 +278,21 @@ const SideLogin = () => {
                         <div className="LogSd_trm">
                           By signing in or creating an account, you agree with
                           NDTV{" "}
-                          <a href="#" className="LogSd_trm-lnk">
+                          <a // href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                            }}
+                            className="LogSd_trm-lnk"
+                          >
                             Terms &amp; Conditions
                           </a>{" "}
                           and{" "}
-                          <a href="#" className="LogSd_trm-lnk">
+                          <a // href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                            }}
+                            className="LogSd_trm-lnk"
+                          >
                             Privacy Policy.
                           </a>
                           <div className="LogSd_nl">
@@ -285,7 +316,13 @@ const SideLogin = () => {
                     {/* Common Content will start here */}
                     <div className="LogSd_comn-wr">
                       <div className="LogSd_logo-wr">
-                        <a className="LogSd_logo" href="javascript:void(0);">
+                        <a
+                          className="LogSd_logo"
+                          // href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                          }}
+                        >
                           <svg
                             className="vj_icn vj_logo-ndtv lg"
                             xmlns="http://www.w3.org/2000/svg"
@@ -331,7 +368,13 @@ const SideLogin = () => {
                         <div className="LogSd_frm-col">
                           <div className="LogSd_frm-lbl">
                             OTP Verfication send to <span>XXXXXXX125</span>
-                            <a href="#">Edit</a>
+                            <a // href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                              }}
+                            >
+                              Edit
+                            </a>
                           </div>
                         </div>
                         <div className="LogSd_otp-vrfy">
@@ -420,7 +463,11 @@ const SideLogin = () => {
                         <div className="LogSd_wth">
                           {/* Login With Gmail */}
                           <div className="LogSd_wth-cir LogSd_gmail">
-                            <a href="#">
+                            <a // href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                              }}
+                            >
                               <div className="LogSd_wth-cn">
                                 <span className="LogSd_sig-icn">
                                   <svg className="vj_icn vj_Google-Lg">
@@ -433,7 +480,11 @@ const SideLogin = () => {
                           </div>
                           {/* Login With Apple */}
                           <div className="LogSd_wth-cir LogSd_apple">
-                            <a href="#">
+                            <a // href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                              }}
+                            >
                               <div className="LogSd_wth-cn">
                                 <span className="LogSd_sig-icn">
                                   <svg className="vj_icn vj_apple-logo">
@@ -446,7 +497,11 @@ const SideLogin = () => {
                           </div>
                           {/* Login With Facebook */}
                           <div className="LogSd_wth-cir LogSd_fb">
-                            <a href="#">
+                            <a // href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                              }}
+                            >
                               <div className="LogSd_wth-cn">
                                 <span className="LogSd_sig-icn">
                                   <svg className="vj_icn vj_fb-lg">
@@ -461,11 +516,21 @@ const SideLogin = () => {
                         <div className="LogSd_trm">
                           By signing in or creating an account, you agree with
                           NDTV{" "}
-                          <a href="#" className="LogSd_trm-lnk">
+                          <a // href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                            }}
+                            className="LogSd_trm-lnk"
+                          >
                             Terms &amp; Conditions
                           </a>{" "}
                           and{" "}
-                          <a href="#" className="LogSd_trm-lnk">
+                          <a // href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                            }}
+                            className="LogSd_trm-lnk"
+                          >
                             Privacy Policy.
                           </a>
                           <div className="LogSd_nl">
@@ -528,7 +593,10 @@ const SideLogin = () => {
                             <div className="LogSdAcc_btn-wr">
                               {" "}
                               <a
-                                href="javascript:void(0);"
+                                // href="#"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                }}
                                 className="_signoutv LogSdAcc_btn"
                               >
                                 Log Out

@@ -41,7 +41,13 @@ const WebstorySlide = () => {
                   <div className="NstCrd_ad-cn NstCrd_ad-cn1">
                     <div className="NstCrd_ad-tl">Advertisement</div>
                     <div className="NstCrd_ad">
-                      <a href="#" className="NstCrd_ad-lk">
+                      <a // href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
+                        
+                        className="NstCrd_ad-lk"
+                      >
                         <img
                           className="NstCrd_ad-img"
                           // src="images/ad1.jpg"

@@ -14,7 +14,10 @@ const LhsContent = () => {
                 <div className="brw-nav">
                   {/* Browse Button */}
                   <a
-                    href="javascript:void(0);"
+                    // href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                    }}
                     className="sid-nav-icn_lnk side-nav-trigger"
                     data-trigger=".nav-trigger"
                     data-class="js_sid-nav"
@@ -122,7 +125,12 @@ const LhsContent = () => {
             {/* placeholder image */}
           </div>
           {/*=== Advertisement ===*/}
-          <a className="ads-wrp" href="#">
+          <a
+            className="ads-wrp" // href="#"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
             <span className="ads-wrp_txt">Advertisement</span>
             <img
               src="https://s0.2mdn.net/simgad/1116328456205855164"

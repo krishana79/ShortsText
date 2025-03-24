@@ -11,7 +11,10 @@ const HeaderContent = () => {
               <div className="brw-nav">
                 {/* Browse Button */}
                 <a
-                  href="javascript:void(0);"
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
                   className="sid-nav-icn_lnk side-nav-trigger"
                   data-trigger=".nav-trigger"
                   data-class="js_sid-nav"
@@ -26,7 +29,12 @@ const HeaderContent = () => {
             </div>
             <div className="NstHdr_li">
               <div className="NstHdr_btn-lk">
-                <a href="#" className="NstHdr_btn">
+                <a // href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                  className="NstHdr_btn"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 79.4 15.8"
@@ -53,7 +61,12 @@ const HeaderContent = () => {
             </div>
             <div className="NstHdr_li">
               <div className="NstHdr_rfsh-lk">
-                <a href="#" className="NstHdr_rfsh NstHdr_icn">
+                <a // href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                  className="NstHdr_rfsh NstHdr_icn"
+                >
                   <svg className="vj_icn vj_refresh">
                     <use xlinkHref="#vj_refresh" />
                   </svg>

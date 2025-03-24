@@ -14,14 +14,26 @@ const SideNavigationHead = () => {
           <img className="vj_icn vj_logo-ndtv Nst_lgo" alt="" src={logo} />
         </a>
         {/* close */}
-        <a className="sid-nav-cls" href="javascript:void(0);">
+        <a
+          className="sid-nav-cls"
+          // href="#"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
           <svg className="snv_cn-icn vj_icn vj_close">
             <use xlinkHref="#vj_close" />
           </svg>
         </a>
         {/* Change Theme Dark and Light mode */}
         <div className="day_night-wrp ttp">
-          <a className="day_night-lnk" href="javascript:void(0);">
+          <a
+            className="day_night-lnk"
+            // href="#"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
             <label className="day_night-icn">
               <input type="checkbox" />
               <div />

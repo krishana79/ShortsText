@@ -225,7 +225,7 @@ const LanguageSwitch = () => {
                         defaultValue="Chattisgarh"
                         className="langchoice"
                         data-value="mp"
-                        defaultChecked="checked"
+                        defaultChecked
                       />
                       <button className="SchLng_btn-slect">
                         <div className="SchLng_btn-wr">
@@ -282,11 +282,20 @@ const LanguageSwitch = () => {
                     </label>
                   </div>
                   <div className="SchLng_subBtn">
-                    <a href="javascript:void()" className="SchLng_subBtn-lnk">
+                    <a
+                      // href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                      }}
+                      className="SchLng_subBtn-lnk"
+                    >
                       Continue
                     </a>
                     <a
-                      href="javascript:void()"
+                      // href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                      }}
                       className="SchLng_subBtn-lnk SchLng_skp-btn"
                     >
                       Skip

@@ -79,7 +79,7 @@ const VideoSlide = () => {
                           </div>
                           {/* <div class="VdEl_inf-mr">more</div> */}
                         </div>
-<SocialMediaHorizontal />
+                        <SocialMediaHorizontal />
                       </div>
                       <div className="VdEl_lod-cl">
                         {/*==  Time, Progress Bar  ==*/}

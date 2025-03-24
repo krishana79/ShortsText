@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../images/news_shorts_logo.svg"
+import logo from "../images/news_shorts_logo.svg";
 const Header = () => {
   return (
     <>
@@ -14,7 +14,10 @@ const Header = () => {
                 <div className="brw-nav">
                   {/* Browse Button */}
                   <a
-                    href="javascript:void(0);"
+                    // href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                    }}
                     className="sid-nav-icn_lnk side-nav-trigger"
                     data-trigger=".nav-trigger"
                     data-class="js_sid-nav"
@@ -82,7 +85,13 @@ const Header = () => {
                 </div>
                 {/* Change Theme Dark and Light mode */}
                 <div className="day_night-wrp ttp">
-                  <a className="day_night-lnk" href="javascript:void(0);">
+                  <a
+                    className="day_night-lnk"
+                    // href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                    }}
+                  >
                     <label className="day_night-icn">
                       <input type="checkbox" />
                       <div />
@@ -113,17 +122,32 @@ const Header = () => {
                       <div className="dd-nav_in NsLngNv_wr">
                         <ul className="dd-nav_ul NsLngNv_ul">
                           <li className="dd-nav_li NsLngNv_li">
-                            <a className="m-nv_lnk NsLngNv_li-lk" href="#">
+                            <a
+                              className="m-nv_lnk NsLngNv_li-lk" // href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                              }}
+                            >
                               English
                             </a>
                           </li>
                           <li className="dd-nav_li NsLngNv_li">
-                            <a className="m-nv_lnk NsLngNv_li-lk" href="#">
+                            <a
+                              className="m-nv_lnk NsLngNv_li-lk" // href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                              }}
+                            >
                               Hindi
                             </a>
                           </li>
                           <li className="dd-nav_li NsLngNv_li">
-                            <a className="m-nv_lnk NsLngNv_li-lk" href="#">
+                            <a
+                              className="m-nv_lnk NsLngNv_li-lk" // href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                              }}
+                            >
                               Marathi
                             </a>
                           </li>

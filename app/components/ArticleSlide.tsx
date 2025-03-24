@@ -22,7 +22,13 @@ const ArticleSlide = () => {
                       <ArticleParagraph />
                       <div className="NstCrd_btn-cn NstCrd_btn-cntr">
                         <div className="NstCrd_btn-lk">
-                          <a href="#" className="NstCrd_btn">
+                          <a
+                            // href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                            }}
+                            className="NstCrd_btn"
+                          >
                             Read full article
                           </a>
                         </div>
@@ -43,7 +49,12 @@ const ArticleSlide = () => {
                   <div className="NstCrd_ad-cn NstCrd_ad-cn1">
                     <div className="NstCrd_ad-tl">Advertisement</div>
                     <div className="NstCrd_ad">
-                      <a href="#" className="NstCrd_ad-lk">
+                      <a // href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
+                        className="NstCrd_ad-lk"
+                      >
                         <img
                           className="NstCrd_ad-img"
                           // src="images/ad1.jpg"

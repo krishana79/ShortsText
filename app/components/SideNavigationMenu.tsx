@@ -31,7 +31,12 @@ const SideNavigationMenu = () => {
           <div className="sid-nav_li sid-nav_li-ttl">News Updates</div>
           <ul className="snv_cn-ul">
             <li className="snv_cn-li">
-              <a className="snv_cn-lnk ripple" href="#">
+              <a
+                className="snv_cn-lnk ripple" // href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
                 <div className="snv_ic-wrp">
                   <svg className="vj_icn vj_coronavirus">
                     <use xlinkHref="#vj_coronavirus" />
@@ -41,7 +46,12 @@ const SideNavigationMenu = () => {
               </a>
             </li>
             <li className="snv_cn-li">
-              <a className="snv_cn-lnk ripple" href="#">
+              <a
+                className="snv_cn-lnk ripple" // href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
                 <div className="snv_ic-wrp">
                   <svg className="vj_icn vj_live-tv">
                     <use xlinkHref="#vj_live-tv" />
@@ -51,7 +61,12 @@ const SideNavigationMenu = () => {
               </a>
             </li>
             <li className="snv_cn-li">
-              <a className="snv_cn-lnk ripple" href="#">
+              <a
+                className="snv_cn-lnk ripple" // href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
                 <div className="snv_ic-wrp">
                   <svg className="vj_icn vj_latest">
                     <use xlinkHref="#vj_latest" />
@@ -61,7 +76,12 @@ const SideNavigationMenu = () => {
               </a>
             </li>
             <li className="snv_cn-li">
-              <a className="snv_cn-lnk ripple" href="#">
+              <a
+                className="snv_cn-lnk ripple" // href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
                 <div className="snv_ic-wrp">
                   <svg className="vj_icn vj_india">
                     <use xlinkHref="#vj_india" />
@@ -71,7 +91,12 @@ const SideNavigationMenu = () => {
               </a>
             </li>
             <li className="snv_cn-li">
-              <a className="snv_cn-lnk ripple" href="#">
+              <a
+                className="snv_cn-lnk ripple" // href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
                 <div className="snv_ic-wrp">
                   <svg className="vj_icn vj_videos">
                     <use xlinkHref="#vj_videos" />
@@ -81,7 +106,12 @@ const SideNavigationMenu = () => {
               </a>
             </li>
             <li className="snv_cn-li">
-              <a className="snv_cn-lnk ripple" href="#">
+              <a
+                className="snv_cn-lnk ripple" // href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
                 <div className="snv_ic-wrp">
                   <svg className="vj_icn vj_cricket">
                     <use xlinkHref="#vj_cricket" />
@@ -91,7 +121,12 @@ const SideNavigationMenu = () => {
               </a>
             </li>
             <li className="snv_cn-li">
-              <a className="snv_cn-lnk ripple" href="#">
+              <a
+                className="snv_cn-lnk ripple" // href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
                 <div className="snv_ic-wrp">
                   <svg className="vj_icn vj_gadgets">
                     <use xlinkHref="#vj_gadgets" />
@@ -101,7 +136,12 @@ const SideNavigationMenu = () => {
               </a>
             </li>
             <li className="snv_cn-li">
-              <a className="snv_cn-lnk ripple" href="#">
+              <a
+                className="snv_cn-lnk ripple" // href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
                 <div className="snv_ic-wrp">
                   <svg className="vj_icn vj_movies">
                     <use xlinkHref="#vj_movies" />
@@ -119,7 +159,12 @@ const SideNavigationMenu = () => {
           <div className="sid-nav_div">
             <ul className="sid-nav_sub">
               <li className="snv_cn-li">
-                <a className="snv_cn-lnk ripple" href="#">
+                <a
+                  className="snv_cn-lnk ripple" // href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                >
                   <div className="snv_ic-wrp">
                     <svg className="vj_icn vj_amp-stories">
                       <use xlinkHref="#vj_amp-stories" />
@@ -129,7 +174,12 @@ const SideNavigationMenu = () => {
                 </a>
               </li>
               <li className="snv_cn-li">
-                <a className="snv_cn-lnk ripple" href="#">
+                <a
+                  className="snv_cn-lnk ripple" // href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                >
                   <div className="snv_ic-wrp">
                     <svg className="vj_icn vj_hop">
                       <use xlinkHref="#vj_hop" />

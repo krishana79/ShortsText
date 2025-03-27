@@ -95,6 +95,7 @@ export default function App() {
     REMIX_DOMAIN_ENG,
     REMIX_APP_ENV,
   } = useLoaderData<typeof loader>();
+  console.log('hello word')
 
   const setBasePath = useEnvStore((state) => state.setBasePath);
   const getApiUrl = (hostname: string) => {

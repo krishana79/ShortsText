@@ -6,6 +6,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 import { rootMeta } from "./utils/MetaUtils";
@@ -21,8 +22,22 @@ import BackToTop from "./components/BackToTop";
 import Header from "./components/Header";
 import SubNavigation from "./components/SubNavigation";
 import SideLogin from "./components/SideLogin";
+import useEnvStore from "./utils/envStore";
+import { useEffect } from "react";
+
+export const loader = async ({ request }) => {
+  return Response.json({
+    REMIX_BASEPATH: process.env.REMIX_BASEPATH,
+    REMIX_DOMAIN_HINDI: process.env.REMIX_DOMAIN_HINDI,
+    REMIX_DOMAIN_ENG: process.env.REMIX_DOMAIN_ENG,
+    REMIX_MENU_API: process.env.REMIX_APP_MENU_API,
+    REMIX_MENU_API_HINDI: process.env.REMIX_APP_MENU_API_HINDI,
+    REMIX_APP_ENV: process.env.REMIX_APP_ENV,
+  });
+};
 
 export const links: LinksFunction = () => [
+  { rel: "icon", type: "image/x-icon", href: "/shortstext/favicon.ico" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -61,32 +76,55 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
-        <script src="js/jquery-min.js"></script>
-        <script src="js/custom.js"></script>
-        <script src="js/swiper/swiper-bundle.min.js"></script>
-        <script src="js/news-shorts/news-shorts-element.js"></script>
-        <script src="js/news-shorts/news-shorts-slider.js"></script>
+        <script src="/shortstext/js/jquery-min.js"></script>
+        <script src="/shortstext/js/custom.js"></script>
+        <script src="/shortstext/js/swiper/swiper-bundle.min.js"></script>
+        <script src="/shortstext/js/news-shorts/news-shorts-element.js"></script>
+        <script src="/shortstext/js/news-shorts/news-shorts-slider.js"></script>
         {/* <script src="js/beeps/beep-video.js"></script>  */}
-        <script src="js/beeps/beep-element.js"></script>
+        <script src="/shortstext/js/beeps/beep-element.js"></script>
       </body>
     </html>
   );
 }
 
 export default function App() {
+  const {
+    REMIX_BASEPATH,
+    REMIX_DOMAIN_HINDI,
+    REMIX_DOMAIN_ENG,
+    REMIX_APP_ENV,
+  } = useLoaderData<typeof loader>();
+
+  const setBasePath = useEnvStore((state) => state.setBasePath);
+  const getApiUrl = (hostname: string) => {
+    if (hostname.endsWith(".com")) {
+      return REMIX_DOMAIN_ENG;
+    } else if (hostname.endsWith(".in")) {
+      return REMIX_DOMAIN_HINDI;
+    }
+    return REMIX_DOMAIN_ENG;
+  };
+  useEffect(() => {
+    setBasePath(REMIX_BASEPATH);
+  }, [REMIX_BASEPATH]);
+
   return (
     <>
       <div className="vjl-cntr_full h-100">
         <div className="vjl-row h-100">
-        <div className="VdPg-Col_Two VdPg-Col_P0 NstSlCol">
-          <Header />
-          <SubNavigation />
-          <Outlet />
+          <div className="VdPg-Col_Two VdPg-Col_P0 NstSlCol">
+            <Header />
+            <SubNavigation />
+            <Outlet />
           </div>
         </div>
       </div>
       <SideLogin />
-      <SideNavigation />
+      <SideNavigation
+        REMIX_DOMAIN_ENG={REMIX_DOMAIN_ENG}
+        REMIX_DOMAIN_HINDI={REMIX_DOMAIN_HINDI}
+      />
       <LanguageSwitch />
       <MoreSwipe />
       {/*======[ Side nav Overlay ]======*/}

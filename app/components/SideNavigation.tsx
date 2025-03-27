@@ -2,7 +2,7 @@ import React from "react";
 import SideNavigationHead from "./SideNavigationHead";
 import SearchForm from "./SearchForm";
 import SideNavigationMenu from "./SideNavigationMenu";
-const SideNavigation = () => {
+const SideNavigation = (props: any) => {
   return (
     <>
       {/*======[ Side Navigation ]======*/}
@@ -11,7 +11,10 @@ const SideNavigation = () => {
           <SideNavigationHead />
           <div className="sid-nav_wrp">
             <SearchForm />
-            <SideNavigationMenu />
+            <SideNavigationMenu
+              REMIX_DOMAIN_ENG={props.REMIX_DOMAIN_ENG}
+              REMIX_DOMAIN_HINDI={props.REMIX_DOMAIN_HINDI}
+            />
           </div>
         </div>
         {/*======[ NDTV WAP Slide Navigation SVG Icons start ]======*/}

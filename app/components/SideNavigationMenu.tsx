@@ -1,10 +1,88 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState, useCallback } from "react";
+import iconMappings from "../utils/SideNavIcons.json";
+import { BASEPATH } from "~/utils/constant";
 
-const SideNavigationMenu = () => {
+const getIcon = (title: string) => {
+  return (iconMappings as Record<string, string>)[title] || "";
+};
+const SideNavigationMenu = (props: any) => {
+  const [errors, setErrors] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [menuItems, setMenuItems] = useState<string[]>([]);
+  const [links, setLinks] = useState<
+    Record<string, { Title: string; Link: string }[]>
+  >({});
+
+  const fetchMenuData = useCallback(async () => {
+    const domain = window.location.hostname;
+    const language = domain.endsWith(".com")
+      ? 1
+      : domain.endsWith(".in")
+      ? 2
+      : 1;
+    setErrors(null);
+    setLoading(true);
+
+    const api_url =
+      typeof process !== "undefined" ? process.env.REMIX_DOMAIN_ENG || "" : "";
+
+    const api_url_hindi =
+      typeof process !== "undefined"
+        ? process.env.REMIX_DOMAIN_HINDI || ""
+        : "";
+
+    try {
+      const { data } =
+        language == 1
+          ? await axios.get(`${api_url}${BASEPATH}/api/menu`)
+          : await axios.get(`${api_url_hindi}${BASEPATH}/api/menuhindi`);
+
+      const sections = data.reduce(
+        (acc: Record<string, { Title: string; Link: string }[]>, item: any) => {
+          acc[item.Desc] = acc[item.Desc] || [];
+          acc[item.Desc].push({ Title: item.Title, Link: item.Link });
+          return acc;
+        },
+        {}
+      );
+      setMenuItems(Object.keys(sections));
+      setLinks(sections);
+    } catch (error) {
+      console.error("Error fetching menu:", error);
+      setErrors("Failed to load menu items");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchMenuData();
+  }, [fetchMenuData]);
   return (
     <>
       {/* Main Nav */}
       <ul className="sid-nav_ul">
+        {menuItems.map((section, index) => (
+          <li key={index} className="snv-two">
+            <div className="sid-nav_li sid-nav_li-ttl">{section}</div>
+            <ul className="snv_cn-ul">
+              {links[section].map((item, index) => (
+                <li key={index} className="snv_cn-li">
+                  <a className="snv_cn-lnk ripple" href={item.Link}>
+                    <div className="snv_ic-wrp">
+                      <svg className="vj_icn vj_coronavirus">
+                        {/* <use xlinkHref="#vj_cities" /> */}
+                        <use xlinkHref={`#${getIcon(item.Title)}`} />
+                      </svg>
+                    </div>{" "}
+                    {item.Title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
         {/* Select Language */}
         {/* <li class="snv-lng">
                     <div class="sid-nav_li sid-nav_li-ttl">Select Language</div>
@@ -27,7 +105,7 @@ const SideNavigationMenu = () => {
                     </div>
                 </li> */}
         {/* News Updates */}
-        <li className="snv-two">
+        {/* <li className="snv-two">
           <div className="sid-nav_li sid-nav_li-ttl">News Updates</div>
           <ul className="snv_cn-ul">
             <li className="snv_cn-li">
@@ -151,12 +229,12 @@ const SideNavigationMenu = () => {
               </a>
             </li>
           </ul>
-        </li>
+        </li> */}
         {/* Featured Links */}
-        <li className="snv-two">
-          <div className="sid-nav_li sid-nav_li-ttl">Featured Links</div>
-          {/* Sub Nav */}
-          <div className="sid-nav_div">
+        {/* <li className="snv-two">
+          <div className="sid-nav_li sid-nav_li-ttl">Featured Links</div> */}
+        {/* Sub Nav */}
+        {/* <div className="sid-nav_div">
             <ul className="sid-nav_sub">
               <li className="snv_cn-li">
                 <a
@@ -190,9 +268,9 @@ const SideNavigationMenu = () => {
               </li>
             </ul>
           </div>
-        </li>
+        </li> */}
         {/* More News */}
-        <li className="snv-two">
+        {/* <li className="snv-two">
           <div className="sid-nav_li sid-nav_li-ttl">More News</div>
           <div className="snv-hrsrl">
             <ul className="snv_cn-ul">
@@ -462,7 +540,7 @@ const SideNavigationMenu = () => {
               </li>
             </ul>
           </div>
-        </li>
+        </li> */}
       </ul>
     </>
   );

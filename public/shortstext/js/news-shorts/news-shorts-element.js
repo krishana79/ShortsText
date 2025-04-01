@@ -134,7 +134,8 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
 
-    var heartLikeElements = document.querySelectorAll('.js-HeartLike');
+    // var heartLikeElements = document.querySelectorAll('.js-HeartLike');
+
     // Add event listener for overlay element
     //  var bepSlCrdElements = document.querySelectorAll('.BepSl_vdo-wr');
 
@@ -169,30 +170,30 @@ $(document).ready(function () {
 
 
 
-    heartLikeElements.forEach(function (element) {
-        element.addEventListener('click', function () {
-            toggleHeart(element);
-        });
-    });
+    // heartLikeElements.forEach(function (element) {
+    //     element.addEventListener('click', function () {
+    //         toggleHeart(element);
+    //     });
+    // });
 
-    function toggleHeart(heartContainer) {
-        var heartIcon = heartContainer.querySelector('.vj_icn');
-        var heartUse = heartIcon.querySelector('use');
+    // function toggleHeart(heartContainer) {
+    //     var heartIcon = heartContainer.querySelector('.vj_icn');
+    //     var heartUse = heartIcon.querySelector('use');
 
-        // Toggle xlink:href attribute
-        if (heartUse.getAttribute('xlink:href') === '#vj_heart') {
-            heartUse.setAttribute('xlink:href', '#vj_heart-fill');
-        } else {
-            heartUse.setAttribute('xlink:href', '#vj_heart');
-        }
+    //     // Toggle xlink:href attribute
+    //     if (heartUse.getAttribute('xlink:href') === '#vj_heart') {
+    //         heartUse.setAttribute('xlink:href', '#vj_heart-fill');
+    //     } else {
+    //         heartUse.setAttribute('xlink:href', '#vj_heart');
+    //     }
 
-        // Toggle heartscale class
-        if (heartIcon.classList.contains('heartscale')) {
-            heartIcon.classList.remove('heartscale');
-        } else {
-            heartIcon.classList.add('heartscale');
-        }
-    }
+    //     // Toggle heartscale class
+    //     if (heartIcon.classList.contains('heartscale')) {
+    //         heartIcon.classList.remove('heartscale');
+    //     } else {
+    //         heartIcon.classList.add('heartscale');
+    //     }
+    // }
 
 
     // volume functionality

@@ -8,10 +8,11 @@ declare module "@remix-run/node" {
     v3_singleFetch: true;
   }
 }
-
 export default defineConfig({
   plugins: [
     remix({
+      basename: `${process.env.REMIX_BASEPATH}`,
+      buildDirectory: "build",
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
@@ -19,19 +20,18 @@ export default defineConfig({
         v3_singleFetch: true,
         v3_lazyRouteDiscovery: true,
       },
-      ignoredRouteFiles: ["**/.*", "**/*.css"],
-      
-      buildDirectory: `public${process.env.REMIX_BASEPATH ?? ""}/build`,
-      routes: async (defineRoutes) => {
+      ignoredRouteFiles: ["**/*.css"],
+      routes(defineRoutes) {
         return flatRoutes("routes", defineRoutes, {
-          basePath: process.env.REMIX_BASEPATH ?? "",
+          // basePath: process.env.REMIX_BASEPATH ?? "",
           ignoredRouteFiles: ["**/.*", "**/*.css",],
         });
       },
+      serverBuildFile: "index.js",
     }),
     tsconfigPaths(),
   ],
   server: {
-    allowedHosts: ["local.ndtv.com", "local.ndtv.in"]
+    allowedHosts: ["local.ndtv.com", "local.ndtv.in"],
   },
 });

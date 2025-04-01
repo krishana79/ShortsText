@@ -1,16 +1,33 @@
-import React from "react";
-
+import React, { useState } from "react";
 const SocialMediaVertical = () => {
+  const [isFilled, setIsFilled] = useState(false);
+  // const isFilled = useStore((state) => state.isFilled);
+  // const setIsFilled = useStore((state) => state.setIsFilled);
+  const handleHeartLike = (e) => {
+    console.log("Heart Button Clicked v");
+    setIsFilled(!isFilled);
+  };
+
   return (
     <>
       <div className="NstEl_icn-wr1">
         {/* HeartLike */}
-        <div className="NstEl_icn-lk">
-          <div className="NstEl_icn js-HeartLike">
-            <svg className="vj_icn vj_heart">
-              <use xlinkHref="#vj_heart" />
-            </svg>
-          </div>
+        <div className="NstEl_icn-lk" onClick={handleHeartLike}>
+          {!isFilled ? (
+            <div className="NstEl_icn js-HeartLike">
+              <svg className="vj_icn vj_heart">
+                <use xlinkHref="#vj_heart" />
+                {/* <use xlinkHref="#vj_heart" /> */}
+              </svg>
+            </div>
+          ) : (
+            <div className="NstEl_icn js-HeartLike">
+              <svg className="vj_icn vj_heart heartscale">
+                <use xlinkHref="#vj_heart-fill" />
+                {/* <use xlinkHref="#vj_heart" /> */}
+              </svg>
+            </div>
+          )}
         </div>
         {/* chat */}
         <div className="NstEl_icn-lk">

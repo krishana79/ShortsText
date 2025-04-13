@@ -1,11 +1,17 @@
 import React, { useState } from "react";
+import useStore from "~/utils/store";
 const SocialMediaVertical = () => {
   const [isFilled, setIsFilled] = useState(false);
-  // const isFilled = useStore((state) => state.isFilled);
-  // const setIsFilled = useStore((state) => state.setIsFilled);
+  
+  const openCmntPopUp = useStore((state) => state.openCmntPopUp);
+  const setOpenCmntPopUp = useStore((state) => state.setOpenCmntPopUp);
+  const setOpenLoginPopUp = useStore((state) => state.setOpenLoginPopUp);
   const handleHeartLike = (e) => {
-    console.log("Heart Button Clicked v");
     setIsFilled(!isFilled);
+  };
+  const handleCommentPopUp = (e) => {
+    setOpenCmntPopUp(!openCmntPopUp)
+    setOpenLoginPopUp(false);
   };
 
   return (
@@ -31,7 +37,7 @@ const SocialMediaVertical = () => {
         </div>
         {/* chat */}
         <div className="NstEl_icn-lk">
-          <div className="NstEl_icn js-MorInf">
+          <div className="NstEl_icn js-MorInf"  onClick={handleCommentPopUp}>
             <svg className="vj_icn vj_chat NstEl_icn-svg NstEl_icn-svg">
               <use xlinkHref="#vj_chat" />
             </svg>

@@ -3,33 +3,33 @@ $(function () {
     var clicked = false;
 
     
-    function updateSlideCount(swiper) {
-        var currentSlideNumber = swiper.activeIndex + 1; 
-        var totalSlides = swiper.slides.length;
-        var slideCountElement = document.querySelector('.NstCrdContr_tx');
+    // function updateSlideCount(swiper) {
+    //     var currentSlideNumber = swiper.activeIndex + 1; 
+    //     var totalSlides = swiper.slides.length;
+    //     var slideCountElement = document.querySelector('.NstCrdContr_tx');
 
-        slideCountElement.innerHTML = currentSlideNumber + " / " + totalSlides;
-        // Calculate progress percentage
-        var progressPercentage = (currentSlideNumber / totalSlides) * 100;
+    //     slideCountElement.innerHTML = currentSlideNumber + " / " + totalSlides;
+    //     // Calculate progress percentage
+    //     var progressPercentage = (currentSlideNumber / totalSlides) * 100;
     
-        // Update progress bar
-        var progressElement = document.querySelector('.NstCrdSld_prgs');
-        var circumference = progressElement.getTotalLength();
-        var offset = circumference * (1 - progressPercentage / 100);
-        progressElement.style.strokeDashoffset = offset;
+    //     // Update progress bar
+    //     var progressElement = document.querySelector('.NstCrdSld_prgs');
+    //     var circumference = progressElement.getTotalLength();
+    //     var offset = circumference * (1 - progressPercentage / 100);
+    //     progressElement.style.strokeDashoffset = offset;
         
-    }
+    // }
   
-    function handleSlideChange(index) {
-        var activeSlidee = $('.swiper-slide').eq(index);
-        var body = $('body');
+    // function handleSlideChange(index) {
+    //     var activeSlidee = $('.swiper-slide').eq(index);
+    //     var body = $('body');
         
-        if (activeSlidee.hasClass('NstSl_li-vdo')) {
-          body.addClass('NstSl_vdo');
-        } else {
-          body.removeClass('NstSl_vdo');
-        }
-      }
+    //     if (activeSlidee.hasClass('NstSl_li-vdo')) {
+    //       body.addClass('NstSl_vdo');
+    //     } else {
+    //       body.removeClass('NstSl_vdo');
+    //     }
+    //   }
       
       
     var parentSwiper = new Swiper('.NstSl_rw', {
@@ -90,31 +90,31 @@ $(function () {
                 keyboard: true,
             }
         },
-        on: {
-            init: function (swiper) {
-                $('.swiper-slide').each(function (index) {
-                    timeoutIDs[index] = setTimeout(function () {
-                        handleTimeout(index);
-                    }, 0);
-                });
-                updateSlideCount(swiper);
-                playActiveSlideVideo(this);
-                handleSlideChange(swiper.activeIndex);
+        // on: {
+        //     init: function (swiper) {
+        //         $('.swiper-slide').each(function (index) {
+        //             timeoutIDs[index] = setTimeout(function () {
+        //                 handleTimeout(index);
+        //             }, 0);
+        //         });
+        //         // updateSlideCount(swiper);
+        //         playActiveSlideVideo(this);
+        //         handleSlideChange(swiper.activeIndex);
                 
-            },
-            slideChange: function (swiper) {
-                clearTimeout(timeoutIDs[this.realIndex]);
-                timeoutIDs[this.realIndex] = setTimeout(function () {
-                    handleTimeout(parentSwiper.realIndex);
-                }, 0);
+        //     },
+        //     slideChange: function (swiper) {
+        //         clearTimeout(timeoutIDs[this.realIndex]);
+        //         timeoutIDs[this.realIndex] = setTimeout(function () {
+        //             handleTimeout(parentSwiper.realIndex);
+        //         }, 0);
                 
-                updateSlideCount(swiper);
-                playActiveSlideVideo(this);
-                handleSlideChange(swiper.activeIndex);
+        //         updateSlideCount(swiper);
+        //         playActiveSlideVideo(this);
+        //         handleSlideChange(swiper.activeIndex);
 
-            },
+        //     },
             
-        }
+        // }
     });
 
     // Initialize nested Swipers
@@ -146,91 +146,91 @@ $(function () {
     });
 
 
-    function handleTimeout(index) {
-        var activeSlide = $('.swiper-slide').eq(index);
+    // function handleTimeout(index) {
+    //     var activeSlide = $('.swiper-slide').eq(index);
         
-                $('.swiper-slide').removeClass('js_icon-more');
-        $(".NstHdr_cn").removeClass("show");
-    //    $('body').removeClass('NstSl_vdo');
-        // $('.swiper-slide').removeClass('js_seek-vis');
+    //             $('.swiper-slide').removeClass('js_icon-more');
+    //     $(".NstHdr_cn").removeClass("show");
+    // //    $('body').removeClass('NstSl_vdo');
+    //     // $('.swiper-slide').removeClass('js_seek-vis');
 
-        activeSlide.addClass('js_seek-vis-sec');
-        activeSlide.removeClass('js_swp-vis');
-        if ($(window).width() <= 767) {
+    //     activeSlide.addClass('js_seek-vis-sec');
+    //     activeSlide.removeClass('js_swp-vis');
+    //     if ($(window).width() <= 767) {
 
-            if (!clicked) {
-                activeSlide.addClass('js_seek-vis-sec');
-                activeSlide.addClass('js_swp-vis');
-                $('.VdEl_vlm-wr').show();
-
-
-                setTimeout(function () {
-                    activeSlide.removeClass('js_seek-vis-sec');
-                    activeSlide.removeClass('js_icon-more');
-                    activeSlide.removeClass('js_icon-more1');
-                    $("body").removeClass('VdElCht_on');
-
-                }, 6000);
-            }
-        }
-        if ($(window).width() >= 767) {
-
-            if (clicked) {
-                activeSlide.addClass('js_seek-vis');
-                //  activeSlide.addClass('js_swp-vis');
+    //         if (!clicked) {
+    //             activeSlide.addClass('js_seek-vis-sec');
+    //             activeSlide.addClass('js_swp-vis');
+    //             $('.VdEl_vlm-wr').show();
 
 
-                setTimeout(function () {
-                    activeSlide.removeClass('js_seek-vis-sec');
-                    activeSlide.removeClass('js_icon-more');
-                    activeSlide.removeClass('js_icon-more1');
+    //             setTimeout(function () {
+    //                 activeSlide.removeClass('js_seek-vis-sec');
+    //                 activeSlide.removeClass('js_icon-more');
+    //                 activeSlide.removeClass('js_icon-more1');
+    //                 $("body").removeClass('VdElCht_on');
 
-                }, 6000);
-            }
-        }
-    }
+    //             }, 6000);
+    //         }
+    //     }
+    //     if ($(window).width() >= 767) {
 
-    function playActiveSlideVideo(swiper) {
-        var activeSlide = swiper.slides[swiper.activeIndex];
-        var activeSlideVideo = activeSlide.querySelector('video');
-        if (activeSlideVideo) {
-            activeSlideVideo.play();
-        }
-    }
-
-    if ($(window).width() <= 767) {
-
-        $('.BepSl_crd').click(function (event) {
-            clicked = true;
-            event.stopPropagation();
-
-            clearTimeout(timeoutIDs[parentSwiper.realIndex]);
-
-            $(this).parents('.swiper-slide-active').toggleClass('js_seek-vis-sec');
-
-            if ($(this).parents('.NstSl_li').hasClass('js_seek-vis-sec')) {
-                $('body').addClass('NstSl_vdo');
-                // $(this).parents('body').toggleClass('xyz');
-
-                $(this).parents('.NstSl_li').addClass('js_swp-vis').removeClass('js_seek-vis-sec');
-            } else {
-                $(this).parents('.swiper-slide-active').removeClass('js_swp-vis');
-            }
+    //         if (clicked) {
+    //             activeSlide.addClass('js_seek-vis');
+    //             //  activeSlide.addClass('js_swp-vis');
 
 
-            if ($(this).parents('.NstSl_li').hasClass('js_swp-vis')) {
-                $(this).parents('.NstSl_li').addClass('js_seek-vis');
-                // $(this).parents('body').toggleClass('abc');
-                        // $('body').addClass('NstSl_vdo');
-                        $('body').removeClass('NstSl_vdo-vis');
+    //             setTimeout(function () {
+    //                 activeSlide.removeClass('js_seek-vis-sec');
+    //                 activeSlide.removeClass('js_icon-more');
+    //                 activeSlide.removeClass('js_icon-more1');
+
+    //             }, 6000);
+    //         }
+    //     }
+    // }
+
+    // function playActiveSlideVideo(swiper) {
+    //     var activeSlide = swiper.slides[swiper.activeIndex];
+    //     var activeSlideVideo = activeSlide.querySelector('video');
+    //     if (activeSlideVideo) {
+    //         activeSlideVideo.play();
+    //     }
+    // }
+
+    // if ($(window).width() <= 767) {
+
+    //     $('.BepSl_crd').click(function (event) {
+    //         clicked = true;
+    //         event.stopPropagation();
+
+    //         clearTimeout(timeoutIDs[parentSwiper.realIndex]);
+
+    //         $(this).parents('.swiper-slide-active').toggleClass('js_seek-vis-sec');
+
+    //         if ($(this).parents('.NstSl_li').hasClass('js_seek-vis-sec')) {
+    //             $('body').addClass('NstSl_vdo');
+    //             // $(this).parents('body').toggleClass('xyz');
+
+    //             $(this).parents('.NstSl_li').addClass('js_swp-vis').removeClass('js_seek-vis-sec');
+    //         } else {
+    //             $(this).parents('.swiper-slide-active').removeClass('js_swp-vis');
+    //         }
+
+
+    //         if ($(this).parents('.NstSl_li').hasClass('js_swp-vis')) {
+    //             $(this).parents('.NstSl_li').addClass('js_seek-vis');
+    //             // $(this).parents('body').toggleClass('abc');
+    //                     // $('body').addClass('NstSl_vdo');
+    //                     $('body').removeClass('NstSl_vdo-vis');
                         
-                // $('body').removeClass('NstSl_vdo');
-            } else {
-                //   $(this).parents('.swiper-slide-active').removeClass('js_seek-vis');
-            }
-        });
+    //             // $('body').removeClass('NstSl_vdo');
+    //         } else {
+    //             //   $(this).parents('.swiper-slide-active').removeClass('js_seek-vis');
+    //         }
+    //     });
 
-    }
+    // }
    
    
 });

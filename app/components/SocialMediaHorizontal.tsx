@@ -1,20 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useStore from "~/utils/store";
 
 const SocialMediaHorizontal = () => {
   const [isFilled, setIsFilled] = useState(false);
-  // const isFilled = useStore((state) => state.isFilled);
-  // const setIsFilled = useStore((state) => state.setIsFilled);
+  const openCmntPopUp = useStore((state) => state.openCmntPopUp);
+  const isDarkMode = useStore((state) => state.isDarkMode);
+  const setIsDarkMode = useStore((state) => state.setIsDarkMode);
+  const setOpenCmntPopUp = useStore((state) => state.setOpenCmntPopUp);
+
+  const openLoginPopUp = useStore((state) => state.openLoginPopUp);
+  const setOpenLoginPopUp = useStore((state) => state.setOpenLoginPopUp);
+  const handleCommentPopUp = (e) => {
+    setOpenCmntPopUp(!openCmntPopUp);
+    setOpenLoginPopUp(false);
+  };
   const handleHeartLike = (e) => {
-    e.stopPropagation()
-    console.log("Heart Button Clicked h");
+    e.stopPropagation();
     setIsFilled(!isFilled);
   };
+  const handleLoginPopUp = (e) => {
+    e.stopPropagation();
+    setOpenLoginPopUp(!openLoginPopUp);
+  };
+  useEffect(() => {
+    const wrapper = document.getElementsByClassName("swiper-slide-active");
+    if (openLoginPopUp) {
+      wrapper[0].classList.add("js_icon-more");
+    } else {
+      wrapper[0].classList.remove("js_icon-more");
+    }
+  }, [openLoginPopUp]);
   return (
     <>
-      <div className="NstEl_icn-wr NstEl_icn-wr2" >
+      <div className="NstEl_icn-wr NstEl_icn-wr2">
         {/* Change Theme Dark and Light mode */}
         <div className="NstEl_icn-lk" style={{ display: "none" }}>
-          <div className="day_night-wr NstEl_drk-ngt NstEl_icn">
+          <div
+            className="day_night-wr NstEl_drk-ngt NstEl_icn"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsDarkMode(!isDarkMode);
+            }}
+          >
             <a
               className="day_night-lnk" // href="#"
               onClick={(e) => {
@@ -31,7 +58,7 @@ const SocialMediaHorizontal = () => {
         {/* HeartLike */}
         <div className="NstEl_icn-lk" onClick={handleHeartLike}>
           {!isFilled ? (
-            <div className="NstEl_icn js-HeartLike" >
+            <div className="NstEl_icn js-HeartLike">
               <svg className="vj_icn vj_heart NstEl_icn-svg">
                 <use xlinkHref="#vj_heart" />
               </svg>
@@ -46,7 +73,7 @@ const SocialMediaHorizontal = () => {
         </div>
         {/* chat */}
         <div className="NstEl_icn-lk">
-          <div className="NstEl_icn js-MorInf">
+          <div className="NstEl_icn js-MorInf" onClick={handleCommentPopUp}>
             <svg className="vj_icn vj_chat NstEl_icn-svg">
               <use xlinkHref="#vj_chat" />
             </svg>
@@ -179,7 +206,7 @@ const SocialMediaHorizontal = () => {
               </li>
             </ul>
           </div>
-          <div className="NstEl_icn NstEl_icn-mr">
+          <div className="NstEl_icn NstEl_icn-mr" onClick={handleLoginPopUp}>
             <svg className="vj_icn vj_chat NstEl_icn-svg">
               <use xlinkHref="#vj_more" />
             </svg>

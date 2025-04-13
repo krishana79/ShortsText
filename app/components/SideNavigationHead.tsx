@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../images/news_shorts_logo.svg";
+import useStore from "~/utils/store";
 const SideNavigationHead = () => {
+  const isDarkMode = useStore((state) => state.isDarkMode);
+  const setIsDarkMode = useStore((state) => state.setIsDarkMode);
+  const setSidenavtoggle = useStore((state) => state.setSidenavtoggle);
+
   return (
     <>
       {" "}
@@ -19,6 +24,7 @@ const SideNavigationHead = () => {
           // href="#"
           onClick={(e) => {
             e.preventDefault();
+            setSidenavtoggle(false);
           }}
         >
           <svg className="snv_cn-icn vj_icn vj_close">
@@ -26,7 +32,13 @@ const SideNavigationHead = () => {
           </svg>
         </a>
         {/* Change Theme Dark and Light mode */}
-        <div className="day_night-wrp ttp">
+        <div
+          className="day_night-wrp ttp"
+          onClick={(e) => {
+            e.preventDefault();
+            setIsDarkMode(!isDarkMode);
+          }}
+        >
           <a
             className="day_night-lnk"
             // href="#"

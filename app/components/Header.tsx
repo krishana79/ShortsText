@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../images/news_shorts_logo.svg";
+import useStore from "~/utils/store";
 const Header = () => {
+  const isDarkMode = useStore((state) => state.isDarkMode);
+  const setSidenavtoggle = useStore((state) => state.setSidenavtoggle);
+  const setIsDarkMode = useStore((state) => state.setIsDarkMode);
+
   return (
     <>
       {/*====== Logo, Main Navigation & Right Icons Live Tv, Notification and Search ======*/}
@@ -17,6 +22,7 @@ const Header = () => {
                     // href="#"
                     onClick={(e) => {
                       e.preventDefault();
+                      setSidenavtoggle(true);
                     }}
                     className="sid-nav-icn_lnk side-nav-trigger"
                     data-trigger=".nav-trigger"
@@ -84,7 +90,13 @@ const Header = () => {
                   </svg>
                 </div>
                 {/* Change Theme Dark and Light mode */}
-                <div className="day_night-wrp ttp">
+                <div
+                  className="day_night-wrp ttp"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsDarkMode(!isDarkMode);
+                  }}
+                >
                   <a
                     className="day_night-lnk"
                     // href="#"
@@ -93,7 +105,7 @@ const Header = () => {
                     }}
                   >
                     <label className="day_night-icn">
-                      <input type="checkbox" />
+                      <input type="checkbox"  />
                       <div />
                     </label>
                   </a>

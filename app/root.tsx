@@ -14,6 +14,7 @@ import { version } from "../package.json";
 import atfCss from "./styles/atf.css?url";
 import swiperMinCss from "./styles/swiper/swiper-bundle.min.css?url";
 import atfBeepDetailsBaseCss from "./styles/atf-beeps-detail-base.css?url";
+import customCss from "./styles/custom.css?url";
 import SvgIcons from "./components/SvgIcons";
 import SideNavigation from "./components/SideNavigation";
 import LanguageSwitch from "./components/LanguageSwitch";
@@ -23,7 +24,8 @@ import Header from "./components/Header";
 import SubNavigation from "./components/SubNavigation";
 import SideLogin from "./components/SideLogin";
 import useEnvStore from "./utils/envStore";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
+import useStore from "./utils/store";
 
 export const loader = async ({ request }) => {
   return Response.json({
@@ -52,6 +54,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: atfCss },
   { rel: "stylesheet", href: swiperMinCss },
   { rel: "stylesheet", href: atfBeepDetailsBaseCss },
+  { rel: "stylesheet", href: customCss },
 ];
 
 export const meta: MetaFunction = () => {
@@ -59,6 +62,31 @@ export const meta: MetaFunction = () => {
   return [...rootMeta, ...versionMeta];
 };
 export function Layout({ children }: { children: React.ReactNode }) {
+  const openCmntPopUp = useStore((state) => state.openCmntPopUp);
+  const sidenavtoggle = useStore((state) => state.sidenavtoggle);
+  const isDarkMode = useStore((state) => state.isDarkMode);
+  const setOpenLoginPopUp = useStore((state) => state.setOpenLoginPopUp);
+  const updateHeight = () => {
+    const ht = window.innerHeight;
+    const svVertical2 = document.querySelector(".NstSl_cn");
+    if (svVertical2) {
+      (svVertical2 as HTMLElement).style.height = `${ht - 71}px`;
+
+      if (window.innerWidth <= 560) {
+        (svVertical2 as HTMLElement).style.height = `${ht}px`;
+      }
+    }
+  };
+  useEffect(() => {
+    if (window.innerWidth <= 767) {
+      updateHeight();
+      window.addEventListener("resize", updateHeight, true);
+    }
+
+    return () => {
+      window.removeEventListener("resize", updateHeight, true);
+    };
+  }, []);
   return (
     <html lang="en">
       <head>
@@ -68,7 +96,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="nav-trigger Vd-list Vd-Lst-pg NstSlCol_left-n">
+      <body
+        className={
+          `nav-trigger Vd-list Vd-Lst-pg NstSlCol_left-n ` +
+          (openCmntPopUp ? `VdElCht_on ` : ``) +
+          (sidenavtoggle ? " js_sid-nav" : "") +
+          (isDarkMode ? " day_night" : ``)
+        }
+        onClick={(e) => {
+          e.stopPropagation()
+          setOpenLoginPopUp(false);
+        }}
+      >
         <SvgIcons />
         <div className="Nst_bg-tp" />
         {/* <div class="Nst_bg-ar"></div> */}
@@ -76,13 +115,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
-        <script src="/shortstext/js/jquery-min.js"></script>
-        <script src="/shortstext/js/custom.js"></script>
-        <script src="/shortstext/js/swiper/swiper-bundle.min.js"></script>
-        <script src="/shortstext/js/news-shorts/news-shorts-element.js"></script>
-        <script src="/shortstext/js/news-shorts/news-shorts-slider.js"></script>
+        {/* <script src="/shortstext/js/jquery-min.js"></script> */}
+        {/* <script src="/shortstext/js/custom.js"></script> */}
+        {/* <script src="/shortstext/js/swiper/swiper-bundle.min.js"></script> */}
+        {/* <script src="/shortstext/js/news-shorts/news-shorts-element.js"></script> */}
+        {/* <script src="/shortstext/js/news-shorts/news-shorts-slider.js"></script> */}
         {/* <script src="js/beeps/beep-video.js"></script>  */}
-        <script src="/shortstext/js/beeps/beep-element.js"></script>
+        {/* <script src="/shortstext/js/beeps/beep-element.js"></script> */}
       </body>
     </html>
   );
@@ -95,9 +134,9 @@ export default function App() {
     REMIX_DOMAIN_ENG,
     REMIX_APP_ENV,
   } = useLoaderData<typeof loader>();
-  console.log('hello word')
 
   const setBasePath = useEnvStore((state) => state.setBasePath);
+  const setSidenavtoggle = useStore((state) => state.setSidenavtoggle);
   const getApiUrl = (hostname: string) => {
     if (hostname.endsWith(".com")) {
       return REMIX_DOMAIN_ENG;
@@ -129,7 +168,14 @@ export default function App() {
       <LanguageSwitch />
       <MoreSwipe />
       {/*======[ Side nav Overlay ]======*/}
-      <a href="#0" className="overlay__side-nav" />
+      <a
+        className="overlay__side-nav"
+        onClick={(e) => {
+          e.preventDefault();
+          setSidenavtoggle(false);
+          setLoginPanel(false);
+        }}
+      />
       <BackToTop />
     </>
   );

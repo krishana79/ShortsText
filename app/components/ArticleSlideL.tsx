@@ -4,18 +4,20 @@ import SocialMediaHorizontal from "./SocialMediaHorizontal";
 import ArticleList from "./ArticleList";
 import ArticleHeadImg from "./ArticleHeadImg";
 import ArticleHeading from "./ArticleHeading";
+import useStore from "~/utils/store";
 
 const ArticleSlideL = () => {
+  const setOpenLoginPopUp = useStore((state) => state.setOpenLoginPopUp);
   return (
-    <div className="swiper-slide NstSl_li NstSl_li-hdr">
-      <div className="NstSlCrd_cn">
-        <div className="NstSlCrd_wr">
-          <SocialMediaVertical />
-          <div className="NstCrd_cn">
-            <div className="NstCrd_wr">
-              <div className="NstCrd-a">
-                <ArticleHeadImg />
-                {/* <div className="NstCrd_img">
+    // <div className="swiper-slide NstSl_li NstSl_li-hdr">
+    <div className="NstSlCrd_cn">
+      <div className="NstSlCrd_wr">
+        <SocialMediaVertical />
+        <div className="NstCrd_cn">
+          <div className="NstCrd_wr">
+            <div className="NstCrd-a">
+              <ArticleHeadImg />
+              {/* <div className="NstCrd_img">
                   <div className="img-gr img-gr_a">
                     <img
                       className="lz_img crd_img-full"
@@ -47,52 +49,58 @@ const ArticleSlideL = () => {
                     </svg>
                   </div>
                 </div> */}
-                <div className="NstCrd_tx-cn">
-                  <div className="NstCrd_tx-wr">
-                    <ArticleHeading />
-                    <ArticleList />
-                    <div className="NstCrd_btn-cn NstCrd_btn-cntr">
-                      <div className="NstCrd_btn-lk">
-                        <a // href="#"
-                          onClick={(e) => {
-                            e.preventDefault();
-                          }}
-                          className="NstCrd_btn"
-                        >
-                          Read full article
-                        </a>
-                      </div>
-                      <SocialMediaHorizontal />
+              <div className="NstCrd_tx-cn">
+                <div className="NstCrd_tx-wr">
+                  <ArticleHeading />
+                  <ArticleList />
+                  <div className="NstCrd_btn-cn NstCrd_btn-cntr">
+                    <div className="NstCrd_btn-lk">
+                      <a // href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
+                        className="NstCrd_btn"
+                      >
+                        Read full article
+                      </a>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div className="NstCrd_ad-wr">
-                <div className="NstCrd_ad-cn NstCrd_ad-cn1">
-                  <div className="NstCrd_ad-tl">Advertisement</div>
-                  <div className="NstCrd_ad">
-                    <a // href="#"
-                      onClick={(e) => {
-                        e.preventDefault();
-                      }}
-                      className="NstCrd_ad-lk"
-                    >
-                      <img
-                        className="NstCrd_ad-img"
-                        // src="images/ad1.jpg"
-                        src=""
-                        alt="#"
-                      />
-                    </a>
+                    <SocialMediaHorizontal />
                   </div>
                 </div>
               </div>
             </div>
+            <div className="NstCrd_ad-wr">
+              <div className="NstCrd_ad-cn NstCrd_ad-cn1">
+                <div className="NstCrd_ad-tl">Advertisement</div>
+                <div className="NstCrd_ad">
+                  <a // href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                    }}
+                    className="NstCrd_ad-lk"
+                  >
+                    <img
+                      className="NstCrd_ad-img"
+                      // src="images/ad1.jpg"
+                      src=""
+                      alt="#"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="NstElMr_ovrly NstElMr_ovrly1" />
         </div>
+        <div
+          className="NstElMr_ovrly NstElMr_ovrly1"
+          onClick={(e) => {
+            e.stopPropagation();
+            setOpenLoginPopUp(false);
+          }}
+        />
       </div>
     </div>
+    // </div>
   );
 };
 

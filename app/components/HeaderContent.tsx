@@ -1,9 +1,12 @@
 import React from "react";
+import useStore from "~/utils/store";
 
 const HeaderContent = () => {
+  const showHeader=  useStore((state) => state.showHeader);
   return (
     <>
-      <div className="NstHdr_cn">
+      {/* <div className="NstHdr_cn"> */}
+      <div className={`NstHdr_cn ` + (showHeader ? "show" : "")}>
         <div className="NstHdr_wr">
           <div className="NstHdr_ul">
             <div className="NstHdr_li">

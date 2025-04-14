@@ -3,6 +3,7 @@ import useStore from "~/utils/store";
 
 const HeaderContent = () => {
   const showHeader=  useStore((state) => state.showHeader);
+  const setSidenavtoggle = useStore((state) => state.setSidenavtoggle);
   return (
     <>
       {/* <div className="NstHdr_cn"> */}
@@ -17,6 +18,7 @@ const HeaderContent = () => {
                   href="#"
                   onClick={(e) => {
                     e.preventDefault();
+                    setSidenavtoggle(true);
                   }}
                   className="sid-nav-icn_lnk side-nav-trigger"
                   data-trigger=".nav-trigger"

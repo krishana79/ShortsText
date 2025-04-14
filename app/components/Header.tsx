@@ -4,6 +4,8 @@ import useStore from "~/utils/store";
 const Header = () => {
   const isDarkMode = useStore((state) => state.isDarkMode);
   const setSidenavtoggle = useStore((state) => state.setSidenavtoggle);
+  const openLoginPanel = useStore((state) => state.openLoginPanel);
+  const setOpenLoginPanel = useStore((state) => state.setOpenLoginPanel);
   const setIsDarkMode = useStore((state) => state.setIsDarkMode);
 
   return (
@@ -63,6 +65,10 @@ const Header = () => {
                   className="log_btn side-nav-trigger Nst_log-btn"
                   data-trigger=".nav-trigger"
                   data-class="js_sid-nav-right"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setOpenLoginPanel(!openLoginPanel);
+                  }}
                 >
                   <div className="log_btn-dt" />
                   <svg className="vj_icn vj_user">

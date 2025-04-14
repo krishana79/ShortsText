@@ -1,6 +1,8 @@
 import React from "react";
+import useStore from "~/utils/store";
 
 const SideLogin = () => {
+  const setOpenLoginPanel= useStore((state) => state.setOpenLoginPanel);
   return (
     <>
       {/*======[ Side Login ]======*/}
@@ -8,7 +10,10 @@ const SideLogin = () => {
         <div className="LogSd_cont">
           <div className="LogSd_wr">
             {/* close */}
-            <span className="LogSd-cls">
+            <span className="LogSd-cls" onClick={(e)=>{
+              e.stopPropagation()
+              setOpenLoginPanel(false)
+            }}>
               <svg className="vj_icn vj_close">
                 <use xlinkHref="#vj_close" />
               </svg>

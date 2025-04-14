@@ -8,6 +8,8 @@ interface storeState {
   setOpenCmntPopUp: (newValue: boolean) => void;
   openLoginPopUp: boolean;
   setOpenLoginPopUp: (newValue: boolean) => void;
+  openLoginPanel: boolean;
+  setOpenLoginPanel: (newValue: boolean) => void;
   clicked:boolean,
   setClicked:(newValue:boolean)=>void;
   showHeader:boolean,
@@ -26,5 +28,7 @@ const useStore = create<storeState>((set) => ({
   setClicked:(newValue:boolean)=>set({clicked:newValue}),
   showHeader:false,
   setShowHeader:(newValue:boolean)=>set({showHeader:newValue}),
+  openLoginPanel: false,
+  setOpenLoginPanel: (newValue: boolean) => set({ openLoginPanel: newValue }),
 }));
 export default useStore;

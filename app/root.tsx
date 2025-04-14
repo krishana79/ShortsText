@@ -66,6 +66,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const sidenavtoggle = useStore((state) => state.sidenavtoggle);
   const isDarkMode = useStore((state) => state.isDarkMode);
   const setOpenLoginPopUp = useStore((state) => state.setOpenLoginPopUp);
+  const openLoginPanel= useStore((state) => state.openLoginPanel);
   const updateHeight = () => {
     const ht = window.innerHeight;
     const svVertical2 = document.querySelector(".NstSl_cn");
@@ -101,7 +102,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           `nav-trigger Vd-list Vd-Lst-pg NstSlCol_left-n ` +
           (openCmntPopUp ? `VdElCht_on ` : ``) +
           (sidenavtoggle ? " js_sid-nav" : "") +
-          (isDarkMode ? " day_night" : ``)
+          (isDarkMode ? " day_night" : ``) +(openLoginPanel ? " js_sid-nav-right" : ``)
         }
         onClick={(e) => {
           e.stopPropagation()
@@ -137,6 +138,7 @@ export default function App() {
 
   const setBasePath = useEnvStore((state) => state.setBasePath);
   const setSidenavtoggle = useStore((state) => state.setSidenavtoggle);
+  const setOpenLoginPanel=  useStore((state) => state.setOpenLoginPanel);
   const getApiUrl = (hostname: string) => {
     if (hostname.endsWith(".com")) {
       return REMIX_DOMAIN_ENG;
@@ -173,7 +175,8 @@ export default function App() {
         onClick={(e) => {
           e.preventDefault();
           setSidenavtoggle(false);
-          setLoginPanel(false);
+          setOpenLoginPanel(false)
+          
         }}
       />
       <BackToTop />

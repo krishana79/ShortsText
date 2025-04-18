@@ -62,7 +62,7 @@ const ArticleSlideY = () => {
             className="NstElMr_ovrly NstElMr_ovrly1"
             onClick={(e) => {
               e.stopPropagation();
-              setOpenLoginPopUp(false);
+              setOpenUtilPopUp(false);
             }}
           />
         </div>

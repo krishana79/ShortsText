@@ -4,9 +4,32 @@ import useStore from "~/utils/store";
 const Header = () => {
   const isDarkMode = useStore((state) => state.isDarkMode);
   const setSidenavtoggle = useStore((state) => state.setSidenavtoggle);
-  const openLoginPanel = useStore((state) => state.openLoginPanel);
+  const toggleLoginBtn = useStore((state) => state.toggleLoginBtn);
+  const setToggleLoginBtn = useStore((state) => state.setToggleLoginBtn);
   const setOpenLoginPanel = useStore((state) => state.setOpenLoginPanel);
   const setIsDarkMode = useStore((state) => state.setIsDarkMode);
+  const hoverMoreIcon = useStore((state) => state.hoverMoreIcon);
+  const setLoginText = useStore((state) => state.setLoginText);
+
+  useEffect(() => {
+    const loginActive = document.querySelectorAll(".log_btn-act");
+    // console.log("loginactive is: ", loginActive)
+    if (loginActive.length > 0) {
+      setOpenLoginPanel(true);
+      setLoginText("View Profile");
+    } else {
+      setOpenLoginPanel(false);
+      setLoginText("Login");
+    }
+  }, [toggleLoginBtn]);
+  useEffect(() => {
+    const loginActive = document.querySelectorAll(".log_btn-act");
+    if (loginActive.length > 0) {
+      setLoginText("View Profile");
+    } else {
+      setLoginText("Login");
+    }
+  },[hoverMoreIcon]);
 
   return (
     <>
@@ -27,8 +50,8 @@ const Header = () => {
                       setSidenavtoggle(true);
                     }}
                     className="sid-nav-icn_lnk side-nav-trigger"
-                    data-trigger=".nav-trigger"
-                    data-class="js_sid-nav"
+                    // data-trigger=".nav-trigger"
+                    // data-class="js_sid-nav"
                   >
                     <div className="sid-nav-icn_wrp">
                       <svg className="vj_icn vj_menu">
@@ -63,11 +86,37 @@ const Header = () => {
                 {/* Login / Sign up */}
                 <div
                   className="log_btn side-nav-trigger Nst_log-btn"
-                  data-trigger=".nav-trigger"
-                  data-class="js_sid-nav-right"
+                  // data-trigger=".nav-trigger"
+                  // data-class="js_sid-nav-right"
                   onClick={(e) => {
-                    e.stopPropagation()
-                    setOpenLoginPanel(!openLoginPanel);
+                    e.stopPropagation();
+                    // setOpenLoginPanel(!openLoginPanel);
+                    setToggleLoginBtn(!toggleLoginBtn);
+                    if (!window.parent_c_islogin()) {
+                      let __rurl = window.location.href;
+                      console.log(
+                        "loadScriptlogin header:",
+                        window.location.origin
+                      );
+
+                      let scriptUrl =
+                        "https://auth.ndtv.com/w/sso.html?siteurl=";
+                      if (
+                        window.location.origin == "https://stage-www.ndtv.com"
+                      ) {
+                        scriptUrl =
+                          "https://stage-auth.ndtv.com/w/sso.html?siteurl=";
+                      }
+
+                      window.location.href =
+                        scriptUrl + encodeURIComponent(__rurl);
+                      // console.log("Hi Krishna",__rurl,"vahsjv:",encodeURIComponent(__rurl))
+                      // alert("Hi from beeps")
+                    }
+                    // else {
+                    //   const toggleClass = element.getAttribute("data-class");
+                    //   document.body.classList.toggle(toggleClass);
+                    // }
                   }}
                 >
                   <div className="log_btn-dt" />
@@ -111,7 +160,7 @@ const Header = () => {
                     }}
                   >
                     <label className="day_night-icn">
-                      <input type="checkbox"  />
+                      <input type="checkbox" />
                       <div />
                     </label>
                   </a>

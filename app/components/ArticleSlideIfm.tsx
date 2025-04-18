@@ -7,7 +7,7 @@ import ArticleHeading from "./ArticleHeading";
 import useStore from "~/utils/store";
 
 const ArticleSlideIfm = () => {
-  const setOpenLoginPopUp = useStore((state) => state.setOpenLoginPopUp);
+  const setOpenUtilPopUp = useStore((state) => state.setOpenUtilPopUp);
   return (
     <>
       {/* <div className="swiper-slide NstSl_li NstSl_li-hdr"> */}
@@ -64,7 +64,7 @@ const ArticleSlideIfm = () => {
             className="NstElMr_ovrly NstElMr_ovrly1"
             onClick={(e) => {
               e.stopPropagation();
-              setOpenLoginPopUp(false);
+              setOpenUtilPopUp(false);
             }}
           />
         </div>

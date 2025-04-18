@@ -8,7 +8,7 @@ const VideoSlide = () => {
   const setClicked = useStore((state) => state.setClicked);
   const [showVolWrp, setShowVolWrp] = useState(false);
   const [isMidWrActive, setIsMidWrActive] = useState(false);
-  const setOpenLoginPopUp = useStore((state) => state.setOpenLoginPopUp);
+  const setOpenUtilPopUp = useStore((state) => state.setOpenUtilPopUp);
 
   const sendToShorts = (e) => {
     const backLink = `${window.location.origin}${BASEPATH} `;
@@ -193,7 +193,7 @@ const VideoSlide = () => {
                     className="VdElMr_ovrly"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setOpenLoginPopUp(false);
+                      setOpenUtilPopUp(false);
                     }}
                   />
                   {/* VOD Share Overlay */}
@@ -211,7 +211,7 @@ const VideoSlide = () => {
           className="NstElMr_ovrly NstElMr_ovrly1"
           onClick={(e) => {
             e.stopPropagation();
-            setOpenLoginPopUp(false);
+            setOpenUtilPopUp(false);
           }}
         />
       </div>

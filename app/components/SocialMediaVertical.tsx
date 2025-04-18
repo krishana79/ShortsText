@@ -2,16 +2,21 @@ import React, { useState } from "react";
 import useStore from "~/utils/store";
 const SocialMediaVertical = () => {
   const [isFilled, setIsFilled] = useState(false);
-  
+
   const openCmntPopUp = useStore((state) => state.openCmntPopUp);
   const setOpenCmntPopUp = useStore((state) => state.setOpenCmntPopUp);
-  const setOpenLoginPopUp = useStore((state) => state.setOpenLoginPopUp);
+  const setOpenUtilPopUp = useStore((state) => state.setOpenUtilPopUp);
+  const toggleLoginBtn = useStore((state) => state.toggleLoginBtn);
+  const setToggleLoginBtn = useStore((state) => state.setToggleLoginBtn);
+  const loginText = useStore((state) => state.loginText);
+  const hoverMoreIcon = useStore((state) => state.hoverMoreIcon);
+  const setHoverMoreIcon = useStore((state) => state.setHoverMoreIcon);
   const handleHeartLike = (e) => {
     setIsFilled(!isFilled);
   };
   const handleCommentPopUp = (e) => {
-    setOpenCmntPopUp(!openCmntPopUp)
-    setOpenLoginPopUp(false);
+    setOpenCmntPopUp(!openCmntPopUp);
+    setOpenUtilPopUp(false);
   };
 
   return (
@@ -37,7 +42,7 @@ const SocialMediaVertical = () => {
         </div>
         {/* chat */}
         <div className="NstEl_icn-lk">
-          <div className="NstEl_icn js-MorInf"  onClick={handleCommentPopUp}>
+          <div className="NstEl_icn js-MorInf" onClick={handleCommentPopUp}>
             <svg className="vj_icn vj_chat NstEl_icn-svg NstEl_icn-svg">
               <use xlinkHref="#vj_chat" />
             </svg>
@@ -151,7 +156,11 @@ const SocialMediaVertical = () => {
           </div>
         </div>
         {/* chat */}
-        <div className="NstEl_icn-lk NstEl_icn-mr1">
+        <div className="NstEl_icn-lk NstEl_icn-mr1" onMouseMove={(e)=>{
+          e.stopPropagation();
+          setHoverMoreIcon(!hoverMoreIcon)
+
+        }}>
           <div className="NstEl_icn">
             <svg className="vj_icn vj_more NstEl_icn-svg">
               <use xlinkHref="#vj_more" />
@@ -163,10 +172,35 @@ const SocialMediaVertical = () => {
                 <a // href="#"
                   onClick={(e) => {
                     e.preventDefault();
+                    setToggleLoginBtn(!toggleLoginBtn);
+                    if (!parent_c_islogin()) {
+                      let __rurl = window.location.href;
+                      console.log(
+                        "loadScriptlogin vs:",
+                        window.location.origin
+                      );
+                      let scriptUrl =
+                        "https://auth.ndtv.com/w/sso.html?siteurl=";
+                      if (
+                        window.location.origin == "https://stage-www.ndtv.com"
+                      ) {
+                        scriptUrl =
+                          "https://stage-auth.ndtv.com/w/sso.html?siteurl=";
+                      }
+
+                      window.location.href =
+                        scriptUrl + encodeURIComponent(__rurl);
+                      // console.log("Hi Krishna",__rurl,"vahsjv:",encodeURIComponent(__rurl))
+                      // alert("Hi from beeps")
+                    } 
+                    // else {
+                    //   const toggleClass = element.getAttribute("data-class");
+                    //   document.body.classList.toggle(toggleClass);
+                    // }
                   }}
                   className="NstElMr_li"
                 >
-                  Login
+                  {loginText}
                 </a>
               </li>
               <li className="NstElMr_li-lk">

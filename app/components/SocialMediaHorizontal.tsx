@@ -8,11 +8,16 @@ const SocialMediaHorizontal = () => {
   const setIsDarkMode = useStore((state) => state.setIsDarkMode);
   const setOpenCmntPopUp = useStore((state) => state.setOpenCmntPopUp);
 
-  const openLoginPopUp = useStore((state) => state.openLoginPopUp);
-  const setOpenLoginPopUp = useStore((state) => state.setOpenLoginPopUp);
+  const openUtilPopUp = useStore((state) => state.openUtilPopUp);
+  const setOpenUtilPopUp = useStore((state) => state.setOpenUtilPopUp);
+  const toggleLoginBtn = useStore((state) => state.toggleLoginBtn);
+  const setToggleLoginBtn = useStore((state) => state.setToggleLoginBtn);
+  const loginText = useStore((state) => state.loginText);
+  const hoverMoreIcon = useStore((state) => state.hoverMoreIcon);
+  const setHoverMoreIcon = useStore((state) => state.setHoverMoreIcon);
   const handleCommentPopUp = (e) => {
     setOpenCmntPopUp(!openCmntPopUp);
-    setOpenLoginPopUp(false);
+    setOpenUtilPopUp(false);
   };
   const handleHeartLike = (e) => {
     e.stopPropagation();
@@ -20,16 +25,17 @@ const SocialMediaHorizontal = () => {
   };
   const handleLoginPopUp = (e) => {
     e.stopPropagation();
-    setOpenLoginPopUp(!openLoginPopUp);
+    setOpenUtilPopUp(!openUtilPopUp);
+    setHoverMoreIcon(!hoverMoreIcon);
   };
   useEffect(() => {
     const wrapper = document.getElementsByClassName("swiper-slide-active");
-    if (openLoginPopUp) {
+    if (openUtilPopUp) {
       wrapper[0].classList.add("js_icon-more");
     } else {
       wrapper[0].classList.remove("js_icon-more");
     }
-  }, [openLoginPopUp]);
+  }, [openUtilPopUp]);
   return (
     <>
       <div className="NstEl_icn-wr NstEl_icn-wr2">
@@ -184,14 +190,39 @@ const SocialMediaHorizontal = () => {
         <div className="NstEl_icn-lk">
           <div className="NstElMr_wr NstElMr_bt">
             <ul className="NstElMr_ul">
-              <li className="NstElMr_li-lk">
+              <li className="NstElMr_li-lk VdEl_lgn-usr __log_trigger">
                 <a // href="#"
                   onClick={(e) => {
                     e.preventDefault();
+                    setToggleLoginBtn(!toggleLoginBtn);
+                    if (!parent_c_islogin()) {
+                      let __rurl = window.location.href;
+                      console.log(
+                        "loadScriptlogin vs:",
+                        window.location.origin
+                      );
+                      let scriptUrl =
+                        "https://auth.ndtv.com/w/sso.html?siteurl=";
+                      if (
+                        window.location.origin == "https://stage-www.ndtv.com"
+                      ) {
+                        scriptUrl =
+                          "https://stage-auth.ndtv.com/w/sso.html?siteurl=";
+                      }
+
+                      window.location.href =
+                        scriptUrl + encodeURIComponent(__rurl);
+                      // console.log("Hi Krishna",__rurl,"vahsjv:",encodeURIComponent(__rurl))
+                      // alert("Hi from beeps")
+                    }
+                    // else {
+                    //   const toggleClass = element.getAttribute("data-class");
+                    //   document.body.classList.toggle(toggleClass);
+                    // }
                   }}
                   className="NstElMr_li"
                 >
-                  Login
+                  {loginText}
                 </a>
               </li>
               <li className="NstElMr_li-lk">

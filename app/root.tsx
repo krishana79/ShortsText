@@ -24,7 +24,7 @@ import Header from "./components/Header";
 import SubNavigation from "./components/SubNavigation";
 import SideLogin from "./components/SideLogin";
 import useEnvStore from "./utils/envStore";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import useStore from "./utils/store";
 
 export const loader = async ({ request }) => {
@@ -65,8 +65,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const openCmntPopUp = useStore((state) => state.openCmntPopUp);
   const sidenavtoggle = useStore((state) => state.sidenavtoggle);
   const isDarkMode = useStore((state) => state.isDarkMode);
-  const setOpenLoginPopUp = useStore((state) => state.setOpenLoginPopUp);
-  const openLoginPanel= useStore((state) => state.openLoginPanel);
+  const setOpenUtilPopUp = useStore((state) => state.setOpenUtilPopUp);
+  const openLoginPanel = useStore((state) => state.openLoginPanel);
   const updateHeight = () => {
     const ht = window.innerHeight;
     const svVertical2 = document.querySelector(".NstSl_cn");
@@ -78,6 +78,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       }
     }
   };
+  const loadScriptWithAsync = (src: string) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    document.body.appendChild(script);
+  };
   useEffect(() => {
     if (window.innerWidth <= 767) {
       updateHeight();
@@ -88,6 +94,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       window.removeEventListener("resize", updateHeight, true);
     };
   }, []);
+  useEffect(() => {}, []);
   return (
     <html lang="en">
       <head>
@@ -102,11 +109,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
           `nav-trigger Vd-list Vd-Lst-pg NstSlCol_left-n ` +
           (openCmntPopUp ? `VdElCht_on ` : ``) +
           (sidenavtoggle ? " js_sid-nav" : "") +
-          (isDarkMode ? " day_night" : ``) +(openLoginPanel ? " js_sid-nav-right" : ``)
+          (isDarkMode ? " day_night" : ``) +
+          (openLoginPanel ? " js_sid-nav-right" : ``)
         }
         onClick={(e) => {
-          e.stopPropagation()
-          setOpenLoginPopUp(false);
+          e.stopPropagation();
+          setOpenUtilPopUp(false);
         }}
       >
         <SvgIcons />
@@ -116,13 +124,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
-        {/* <script src="/shortstext/js/jquery-min.js"></script> */}
-        {/* <script src="/shortstext/js/custom.js"></script> */}
-        {/* <script src="/shortstext/js/swiper/swiper-bundle.min.js"></script> */}
-        {/* <script src="/shortstext/js/news-shorts/news-shorts-element.js"></script> */}
-        {/* <script src="/shortstext/js/news-shorts/news-shorts-slider.js"></script> */}
-        {/* <script src="js/beeps/beep-video.js"></script>  */}
-        {/* <script src="/shortstext/js/beeps/beep-element.js"></script> */}
       </body>
     </html>
   );
@@ -138,7 +139,8 @@ export default function App() {
 
   const setBasePath = useEnvStore((state) => state.setBasePath);
   const setSidenavtoggle = useStore((state) => state.setSidenavtoggle);
-  const setOpenLoginPanel=  useStore((state) => state.setOpenLoginPanel);
+  const setOpenLoginPanel = useStore((state) => state.setOpenLoginPanel);
+  const [loginScriptExecuted, setLoginScriptExecuted] = useState(false);
   const getApiUrl = (hostname: string) => {
     if (hostname.endsWith(".com")) {
       return REMIX_DOMAIN_ENG;
@@ -147,9 +149,58 @@ export default function App() {
     }
     return REMIX_DOMAIN_ENG;
   };
+
+  const loadScript = (id: any, src: any) => {
+    return new Promise<void>((resolve, reject) => {
+      if (document.getElementById(id)) {
+        resolve();
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.id = id;
+      script.src = src;
+      script.async = true;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.body.appendChild(script);
+    });
+  };
+
+  const executeScript = () => {
+    if (!loginScriptExecuted) {
+      setLoginScriptExecuted(true);
+      const loadScriptlogin = () => {
+        console.log("loadScriptlogin root:", window.location.origin);
+        const scriptUrl =
+          "https://auth.ndtv.com/w/js/config.js?v=2023-10-27-01&site=entertainment";
+        return loadScript("__loginScript", scriptUrl);
+      };
+      Promise.all([loadScriptlogin()])
+        .then(() => {
+
+          const overlaySideNav = document.querySelector(".overlay__side-nav");
+          const logSdCls = document.querySelector(".LogSd-cls");
+          overlaySideNav?.addEventListener("click", removeJsSideNavClass);
+          logSdCls?.addEventListener("click", removeJsSideNavClass);
+
+          function removeJsSideNavClass() {
+            document.body.classList.remove("js_sid-nav-right");
+          }
+        })
+        .catch((error) => {
+          console.log("Error loading scripts:", error);
+        });
+    }
+  };
   useEffect(() => {
     setBasePath(REMIX_BASEPATH);
   }, [REMIX_BASEPATH]);
+
+  useEffect(() => {
+    if (loginScriptExecuted) return;
+    executeScript();
+  }, [loginScriptExecuted]);
 
   return (
     <>
@@ -175,8 +226,7 @@ export default function App() {
         onClick={(e) => {
           e.preventDefault();
           setSidenavtoggle(false);
-          setOpenLoginPanel(false)
-          
+          setOpenLoginPanel(false);
         }}
       />
       <BackToTop />

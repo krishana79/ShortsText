@@ -27,7 +27,7 @@ function* indexGenerator(index: number) {
 }
 
 const Content = (props: { slideData: any }) => {
-  const videoNodes= props.slideData.results.slice(-50)
+  // const videoNodes= props.slideData.results.slice(-50)
   // console.log("videoNodes", videoNodes);
   const iterator = indexGenerator(0);
   const location = useLocation();
@@ -264,7 +264,7 @@ const Content = (props: { slideData: any }) => {
                 >
                   {/* <div className="swiper-container NstSl_rw"> */}
                   {/* <div className="swiper-wrapper NstSl_ul"> */}
-                  {videoNodes.map((item, index) => {
+                  { props.slideData.results.map((item, index) => {
                     const dataIndex = iterator.next().value;
                     const isActive = activeIndex === dataIndex;
                     const d = item;

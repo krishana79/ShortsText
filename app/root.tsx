@@ -173,7 +173,7 @@ export default function App() {
       const loadScriptlogin = () => {
         console.log("loadScriptlogin root:", window.location.origin);
         const scriptUrl =
-          "https://auth.ndtv.com/w/js/config.js?v=2023-10-27-01&site=entertainment";
+          "https://stage-auth.ndtv.com/w/js/config.js?v=2023-10-27-01&site=entertainment&nocss=1";
         return loadScript("__loginScript", scriptUrl);
       };
       Promise.all([loadScriptlogin()])

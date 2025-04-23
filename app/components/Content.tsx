@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Mousewheel, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/virtual";
+import { useLocation } from "@remix-run/react";
+import { Mousewheel, Navigation, Virtual } from "swiper/modules";
 import LhsContent from "./LhsContent";
 import HeaderContent from "./HeaderContent";
 import SwiperNav from "./SwiperNav";
@@ -14,8 +17,23 @@ import ScoreCard from "./ScoreCard";
 import ArticleSlideY from "./ArticleSlideY";
 import ArticleSlideIfm from "./ArticleSlideIfm";
 import useStore from "~/utils/store";
+import { isEncodedString } from "~/utils/constant";
 
-const Content = () => {
+function* indexGenerator(index: number) {
+  while (true) {
+    yield index;
+    index++;
+  }
+}
+
+const Content = (props: { slideData: any }) => {
+  const videoNodes= props.slideData.results.slice(-50)
+  // console.log("videoNodes", videoNodes);
+  const iterator = indexGenerator(0);
+  const location = useLocation();
+  const prevPath = useRef("");
+  const isPathChange = location.pathname !== prevPath.current;
+  const isDataAvailable = (props.slideData?.results?.length || 0) > 0;
   const timeoutIDs: Array<NodeJS.Timeout | number> = [];
   const [isClient, setIsClient] = useState(false);
   const [currentSlideNumber, setCurrentSlideNumber] = useState(1);
@@ -23,9 +41,14 @@ const Content = () => {
   const clicked = useStore((state) => state.clicked);
   const setShowHeader = useStore((state) => state.setShowHeader);
   const showHeader = useStore((state) => state.showHeader);
+  const setChangeSlide = useStore((state) => state.setChangeSlide);
+  const changeSlide = useStore((state) => state.changeSlide);
+  const activeIndex = useStore((state) => state.activeIndex);
+  const setActiveIndex = useStore((state) => state.setActiveIndex);
+  const swipeRef = useRef(null);
 
   const updateSlideCount = (swiper) => {
-    const currentSlide = swiper.activeIndex + 1; // activeIndex is 0-based
+    const currentSlide = swiper.activeIndex + 1;
     const totalSlides = swiper.slides.length;
     const progressPercentage = (currentSlide / totalSlides) * 100;
     setCurrentSlideNumber(currentSlide);
@@ -126,6 +149,16 @@ const Content = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    prevPath.current = location.pathname;
+  }, [location.pathname]);
+  useEffect(() => {
+    if (isPathChange === true) {
+      swipeRef.current?.swiper.slideTo(0, 0);
+      setActiveIndex(0);
+    }
+  }, [isPathChange]);
   return (
     <>
       <LhsContent />
@@ -138,9 +171,10 @@ const Content = () => {
               {/* head */}
               <HeaderContent />
               {/* swiper */}
-              {isClient && (
+              {isClient && isDataAvailable && (
                 <Swiper
-                  modules={[Mousewheel, Navigation]}
+                  modules={[Mousewheel, Navigation, Virtual]}
+                  ref={swipeRef}
                   className="NstSl_rw"
                   wrapperClass="NstSl_ul"
                   effect="slide"
@@ -148,14 +182,17 @@ const Content = () => {
                   loop={false}
                   grabCursor={true}
                   centeredSlides={true}
-                  cssMode={true}
+                  initialSlide={0}
+                  allowSlideNext={changeSlide ? true : false}
+                  allowSlidePrev={changeSlide ? true : false}
+                  cssMode={false}
                   speed={400}
                   scrollbar={{
                     el: ".swiper-scrollbar",
                     hide: false,
                     draggable: true,
                   }}
-                  slidesPerView={"auto"}
+                  slidesPerView={1}
                   mousewheel={{
                     releaseOnEdges: true,
                     invert: false,
@@ -198,16 +235,20 @@ const Content = () => {
                       keyboard: true,
                     },
                   }}
+                  onSwiper={(swiper) => {
+                    swiper.update();
+                  }}
                   onInit={(swiper) => {
                     initSwiper(swiper);
                     playActiveSlideVideo(swiper);
                   }}
                   onSlideChange={(swiper) => {
-                    console.log(
-                      "swiper active index",
-                      swiper.activeIndex,
-                      swiper.realIndex
-                    );
+                    // console.log(
+                    //   "swiper active index",
+                    //   swiper.activeIndex,
+                    //   swiper.realIndex
+                    // );
+                    setActiveIndex(swiper.activeIndex);
                     if (timeoutIDs[swiper.realIndex]) {
                       clearTimeout(timeoutIDs[swiper.realIndex]);
                     }
@@ -219,10 +260,83 @@ const Content = () => {
                     playActiveSlideVideo(swiper);
                     handleSlideChange(swiper.activeIndex);
                   }}
+                  virtual
                 >
                   {/* <div className="swiper-container NstSl_rw"> */}
                   {/* <div className="swiper-wrapper NstSl_ul"> */}
-                  <SwiperSlide
+                  {videoNodes.map((item, index) => {
+                    const dataIndex = iterator.next().value;
+                    const isActive = activeIndex === dataIndex;
+                    const d = item;
+                    const slides: React.ReactNode[] = [];
+
+                    if (item.type === "video") {
+                      slides.push(
+                        <SwiperSlide
+                          key={d.id}
+                          virtualIndex={dataIndex}
+                          className="NstSl_li NstSl_li-hdr NstSl_li-vdo"
+                        >
+                          <VideoSlide
+                            id={d.id}
+                            pubDate={d.pubDate}
+                            title={
+                              isEncodedString(d.title)
+                                ? decodeURIComponent(escape(d.title))
+                                : d.title
+                            }
+                            link={d.link}
+                            thumbImage={d.thumb_image}
+                            image={d.fullimage}
+                            category={d.category}
+                            categoryName={d.category_name}
+                            description={d.description}
+                            highlights={d.highlights}
+                            show={d.show}
+                            filepath={d["media:filepath"]}
+                            duration={d["media:duration"]}
+                            applink={d.applink}
+                            isActive={isActive}
+                            swiperRef={swipeRef}
+                          />
+                        </SwiperSlide>
+                      );
+                    }
+
+                    if (item.type === "story") {
+                      slides.push(
+                        <SwiperSlide
+                          key={d.id}
+                          virtualIndex={dataIndex}
+                          className="NstSl_li NstSl_li-hdr"
+                        >
+                          <ArticleSlide
+                            id={d.id}
+                            title={
+                              isEncodedString(d.title)
+                                ? decodeURIComponent(escape(d.title))
+                                : d.title
+                            }
+                            description={d.excerpt}
+                            link={d.link}
+                            image={d.fullimage}
+                            thumbImage={d.thumb_image}
+                            category={d.category}
+                            categoryName={d.category_name}
+                            highlights={d.highlights}
+                            applink={d.applink}
+                            pubDate={d.pubDate}
+                            swiperRef={swipeRef}
+                            isActive={isActive}
+                          />
+                        </SwiperSlide>
+                      );
+                    }
+
+                    return slides;
+                  })}
+
+                  {/* <SwiperSlide
                     className="NstSl_li NstSl_li-hdr NstSl_li-vdo"
                     onClick={(e) => {
                       handleShowHeader(e);
@@ -271,7 +385,7 @@ const Content = () => {
 
                   <SwiperSlide className="NstSl_li NstSl_li-hdr">
                     <ArticleSlide />
-                  </SwiperSlide>
+                  </SwiperSlide> */}
                   {/* </div> */}
 
                   <CardCounter

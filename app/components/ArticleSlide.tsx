@@ -6,7 +6,7 @@ import ArticleHeadImg from "./ArticleHeadImg";
 import ArticleHeading from "./ArticleHeading";
 import useStore from "~/utils/store";
 
-const ArticleSlide = () => {
+const ArticleSlide = (props) => {
   const setOpenUtilPopUp = useStore((state) => state.setOpenUtilPopUp);
   return (
     <>
@@ -17,15 +17,15 @@ const ArticleSlide = () => {
           <div className="NstCrd_cn">
             <div className="NstCrd_wr">
               <div className="NstCrd-a">
-                <ArticleHeadImg />
+                <ArticleHeadImg image={props.image}/>
                 <div className="NstCrd_tx-cn">
                   <div className="NstCrd_tx-wr">
-                    <ArticleHeading />
-                    <ArticleParagraph />
+                    <ArticleHeading  title={props.title} pubDate={props.pubDate} category={props.category}/>
+                    <ArticleParagraph description={props.description}/>
                     <div className="NstCrd_btn-cn NstCrd_btn-cntr">
                       <div className="NstCrd_btn-lk">
                         <a
-                          // href="#"
+                           href={props.link}
                           onClick={(e) => {
                             e.preventDefault();
                           }}

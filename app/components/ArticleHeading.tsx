@@ -1,6 +1,6 @@
 import React from "react";
 
-const ArticleHeading = () => {
+const ArticleHeading = (props) => {
   return (
     <>
       <div className="NstCrd_ttl-lk">
@@ -10,8 +10,7 @@ const ArticleHeading = () => {
             e.preventDefault();
           }}
         >
-          Modi Government Plans To Induct 25 Private Sector Specialists In Key
-          Posts
+          {props.title}
         </a>
       </div>
       <div className="NstCrd_by">
@@ -23,11 +22,11 @@ const ArticleHeading = () => {
                 e.preventDefault();
               }}
             >
-              World News
+              {props.category}
             </a>
           </li>
           <li className="NstCrd_by-li">
-            <div className="NstCrd_by-lnk">Updated: Mar 01, 2024</div>
+            <div className="NstCrd_by-lnk">{props.pubDate}</div>
           </li>
         </ul>
       </div>

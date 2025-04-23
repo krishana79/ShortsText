@@ -30,11 +30,13 @@ const SocialMediaHorizontal = () => {
   };
   useEffect(() => {
     const wrapper = document.getElementsByClassName("swiper-slide-active");
+    if(wrapper.length>0){
     if (openUtilPopUp) {
       wrapper[0].classList.add("js_icon-more");
     } else {
       wrapper[0].classList.remove("js_icon-more");
     }
+  }
   }, [openUtilPopUp]);
   return (
     <>

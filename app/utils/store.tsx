@@ -1,7 +1,7 @@
 import { create } from "zustand";
 interface storeState {
-  isDarkMode:boolean;
-  setIsDarkMode:(newValue:boolean)=>void;
+  isDarkMode: boolean;
+  setIsDarkMode: (newValue: boolean) => void;
   openCmntPopUp: boolean;
   sidenavtoggle: boolean;
   setSidenavtoggle: (newValue: boolean) => void;
@@ -12,35 +12,47 @@ interface storeState {
   setToggleLoginBtn: (newValue: boolean) => void;
   openLoginPanel: boolean;
   setOpenLoginPanel: (newValue: boolean) => void;
-  clicked:boolean,
-  setClicked:(newValue:boolean)=>void;
-  showHeader:boolean,
-  setShowHeader:(newValue:boolean)=>void;
-  loginText:string;
-  setLoginText:(newValue:string)=>void;
-  hoverMoreIcon:boolean;
-  setHoverMoreIcon:(newValue:boolean)=>void;
+  clicked: boolean;
+  setClicked: (newValue: boolean) => void;
+  showHeader: boolean;
+  setShowHeader: (newValue: boolean) => void;
+  loginText: string;
+  setLoginText: (newValue: string) => void;
+  hoverMoreIcon: boolean;
+  setHoverMoreIcon: (newValue: boolean) => void;
+  activeIndex: number;
+  setActiveIndex: (newValue: number) => void;
+  changeSlide: boolean;
+  setChangeSlide: (newValue: boolean) => void;
+  isMuted: boolean;
+  setIsMuted: (newValue: boolean) => void;
 }
 const useStore = create<storeState>((set) => ({
   isDarkMode: false,
   setIsDarkMode: (newValue: boolean) => set({ isDarkMode: newValue }),
   openCmntPopUp: false,
   setOpenCmntPopUp: (newValue: boolean) => set({ openCmntPopUp: newValue }),
-  sidenavtoggle:false,
+  sidenavtoggle: false,
   setSidenavtoggle: (newValue: boolean) => set({ sidenavtoggle: newValue }),
   openUtilPopUp: false,
   setOpenUtilPopUp: (newValue: boolean) => set({ openUtilPopUp: newValue }),
-  clicked:false,
-  setClicked:(newValue:boolean)=>set({clicked:newValue}),
-  showHeader:false,
-  setShowHeader:(newValue:boolean)=>set({showHeader:newValue}),
+  clicked: false,
+  setClicked: (newValue: boolean) => set({ clicked: newValue }),
+  showHeader: false,
+  setShowHeader: (newValue: boolean) => set({ showHeader: newValue }),
   openLoginPanel: false,
   setOpenLoginPanel: (newValue: boolean) => set({ openLoginPanel: newValue }),
   toggleLoginBtn: false,
   setToggleLoginBtn: (newValue: boolean) => set({ toggleLoginBtn: newValue }),
   loginText: "Login",
   setLoginText: (newValue: string) => set({ loginText: newValue }),
-  hoverMoreIcon:false,
+  hoverMoreIcon: false,
   setHoverMoreIcon: (newValue: boolean) => set({ hoverMoreIcon: newValue }),
+  activeIndex: 0,
+  setActiveIndex: (newValue: number) => set({ activeIndex: newValue }),
+  changeSlide: true,
+  setChangeSlide: (newValue: boolean) => set({ changeSlide: newValue }),
+  isMuted: true,
+  setIsMuted: (newValue: boolean) => set({ isMuted: newValue }),
 }));
 export default useStore;

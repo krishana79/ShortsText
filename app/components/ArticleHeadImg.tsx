@@ -1,6 +1,6 @@
 import React from "react";
 
-const ArticleHeadImg = () => {
+const ArticleHeadImg = (props) => {
   return (
     <>
       <div className="NstCrd_img">
@@ -8,7 +8,7 @@ const ArticleHeadImg = () => {
           <img
             className="lz_img crd_img-full"
             alt="img"
-            src="https://c.ndtvimg.com/2023-09/ljifo6ns_narendra-modi-cabinet-meet_625x300_18_September_23.jpg"
+            src={props.image}
           />
         </div>
         <div className="NstCrd_lgo">

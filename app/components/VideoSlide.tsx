@@ -1,15 +1,59 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SocialMediaVertical from "./SocialMediaVertical";
 import SocialMediaHorizontal from "./SocialMediaHorizontal";
 import useStore from "~/utils/store";
-import { BASEPATH } from "~/utils/constant";
+import { BASEPATH, isEncodedString } from "~/utils/constant";
+import VideoPlayer from "~/hooks/useVideoPlayer";
+import parse from "html-react-parser";
+import { isMobile } from "react-device-detect";
+import Hls from "hls.js";
 
-const VideoSlide = () => {
+const VideoSlide = (props) => {
+  const swiperRef = props.swiperRef?.current;
+  const videoElement = useRef<HTMLVideoElement>(null);
   const setClicked = useStore((state) => state.setClicked);
   const [showVolWrp, setShowVolWrp] = useState(false);
   const [isMidWrActive, setIsMidWrActive] = useState(false);
+  const seekBar = useRef(null);
+  const progressBar = useRef(null);
+  const seekThumb = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
   const setOpenUtilPopUp = useStore((state) => state.setOpenUtilPopUp);
 
+  const convertToHLSUrl = (url) => {
+    return url.replace("/ndtv/", "/hls/").replace(".mp4", "/master.m3u8");
+  };
+  const hlssrc = convertToHLSUrl(props.filepath);
+  const fetchLowestQualityManifest = async (manifestUrl) => {
+    const response = await fetch(manifestUrl);
+    const text = await response.text();
+    // console.log("text:", text);
+    // Parse the manifest to find the lowest quality variant
+    const lines = text.split("\n");
+    let minQualityUrl = "";
+    let minBandwidth = Infinity;
+
+    lines.forEach((line, i) => {
+      if (line.startsWith("#EXT-X-STREAM-INF")) {
+        const bandwidth = parseInt(line.match(/BANDWIDTH=(\d+)/)?.[1] || "0");
+        if (bandwidth < minBandwidth) {
+          minBandwidth = bandwidth;
+          minQualityUrl = lines[i + 1];
+        }
+      }
+    });
+
+    if (!minQualityUrl) {
+      throw new Error("No quality variant found in the manifest.");
+    }
+
+    // Resolve the correct URL structure
+    const basePath = manifestUrl.substring(0, manifestUrl.lastIndexOf("/") + 1); // Base path of the manifest
+    const fullUrl = new URL(minQualityUrl, basePath).toString();
+
+    console.log("Your updated URL is:", fullUrl);
+    return fullUrl;
+  };
   const sendToShorts = (e) => {
     const backLink = `${window.location.origin}${BASEPATH} `;
     e.stopPropagation();
@@ -55,9 +99,83 @@ const VideoSlide = () => {
       }
     }
   };
+  const handleNextVideo = (e: any) => {
+    console.log("handleNextVideo");
+    swiperRef.swiper.slideNext();
+    console.log("swiperRef", swiperRef);
+  };
+  const {
+
+    playVideo,
+    pauseVideo,
+  } = VideoPlayer(
+    videoElement,
+    seekBar,
+    progressBar,
+    seekThumb,
+    handleNextVideo,
+    setIsMidWrActive
+  );
+
   useEffect(() => {
     showVlmWr();
   }, []);
+
+  useEffect(() => {
+    if (Hls.isSupported()) {
+      //alert("hello from canplay kk")
+      const hls = new Hls();
+      hls.loadSource(hlssrc);
+      if (videoElement.current) {
+        hls.attachMedia(videoElement.current);
+      }
+
+      hls.on(Hls.Events.MEDIA_ATTACHED, () => {
+        console.log("HLS is attached to the video element.");
+      });
+      hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
+        // console.log("Manifest loaded, available quality levels:", data.levels);
+
+        let maxIndexLvl = -1;
+        data.levels.forEach((level, index) => {
+          console.log(level, index);
+          if (level.width == 480) {
+            maxIndexLvl = index;
+          }
+        });
+        console.log("maxIndexLvl-> ", maxIndexLvl);
+        hls.autoLevelCapping = maxIndexLvl;
+      });
+      hls.on(Hls.Events.ERROR, (event, data) => {
+        console.error("HLS error:", data);
+      });
+
+      return () => {
+        hls.destroy();
+      };
+    } else if (
+      videoElement.current?.canPlayType("application/vnd.apple.mpegurl")
+    ) {
+      fetchLowestQualityManifest(props.hlssrc).then((newUrl) => {
+        // console.log("url sourav", newUrl);
+        if (!videoElement.current) return;
+        videoElement.current.src = newUrl;
+        videoElement.current.type = "application/x-mpegURL";
+        videoElement.current.loop = false;
+        videoElement.current.load();
+        videoElement.current.autoplay = false;
+      });
+
+      //videoElement.current.autoplay = true;
+    }
+  }, [props.hlssrc]);
+  useEffect(() => {
+    if (props.isActive) {
+      playVideo();
+    } else {
+      pauseVideo();
+    }
+  }, [props.isActive]);
   return (
     // <div className="swiper-slide NstSl_li NstSl_li-hdr NstSl_li-vdo">
     <div className="NstSlCrd_cn">
@@ -68,22 +186,19 @@ const VideoSlide = () => {
             <div className="BepSl_vdo-cn">
               <div className="BepSl_vdo-wr">
                 <video
+                  ref={videoElement}
                   className="BepSl_vdo"
-                  src="https://ndtvod.pc.cdn.bitgravity.com/23372/ndtv/17032024_n_EdSheeran_106145_78031_5000.mp4"
+                  // src={props.filepath}
                   muted
                   preload="auto"
-                  autoPlay
+                  // autoPlay
                   width="100%"
                   height="100%"
                   playsInline
                 />
                 <div className="VdEl_cn">
                   {/* back and volume */}
-                  <div
-                    className="VdEl_top-wr"
-                    onClick={() => {
-                    }}
-                  >
+                  <div className="VdEl_top-wr" onClick={() => {}}>
                     <div className="VdEl_top-bck" onClick={sendToShorts}>
                       <div className="VdEl_icn-lk">
                         <div className="VdEl_icn1">
@@ -117,6 +232,7 @@ const VideoSlide = () => {
                       isMidWrActive ? "js_VdEl_sk_vlm-act" : ""
                     }`}
                     onClick={(event) => {
+                      console.log("clicked VdEl_mid-wr");
                       event.stopPropagation();
                       showVlmWr();
                       setIsMidWrActive((prev) => !prev);
@@ -151,8 +267,9 @@ const VideoSlide = () => {
                     <div className="VdEl_lod-cl VdEl_lod-cl1">
                       <div className="VdEl_inf-wr">
                         <div className="VdEl_inf">
-                          "Ram not the dispute, Ram is the solution", said PM
-                          Modi while addressing the gathering at the Ram Mandir
+                          {isEncodedString(props.title)
+                            ? parse(props.title)
+                            : props.title}
                         </div>
                         {/* <div class="VdEl_inf-mr">more</div> */}
                       </div>
@@ -183,7 +300,9 @@ const VideoSlide = () => {
                             </div>
                           </div>
                           {/* Time */}
-                          <div className="VdEl_sk-tm">02:35/05:00</div>
+                          <div className="VdEl_sk-tm">
+                            02:35/05:00
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -197,11 +316,7 @@ const VideoSlide = () => {
                     }}
                   />
                   {/* VOD Share Overlay */}
-                  <div
-                    className="VdEl_ovl"
-                    onClick={() => {
-                    }}
-                  />
+                  <div className="VdEl_ovl" onClick={() => {}} />
                 </div>
               </div>
             </div>

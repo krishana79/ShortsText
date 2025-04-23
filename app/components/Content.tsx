@@ -27,7 +27,7 @@ function* indexGenerator(index: number) {
 }
 
 const Content = (props: { slideData: any }) => {
-  // const videoNodes= props.slideData.results.slice(-50)
+  // const videoNodes = props.slideData.results.slice(-50);
   // console.log("videoNodes", videoNodes);
   const iterator = indexGenerator(0);
   const location = useLocation();
@@ -49,7 +49,7 @@ const Content = (props: { slideData: any }) => {
 
   const updateSlideCount = (swiper) => {
     const currentSlide = swiper.activeIndex + 1;
-    const totalSlides = swiper.slides.length;
+    const totalSlides = props.slideData.results.length;
     const progressPercentage = (currentSlide / totalSlides) * 100;
     setCurrentSlideNumber(currentSlide);
     setTotalSlides(totalSlides);
@@ -66,10 +66,11 @@ const Content = (props: { slideData: any }) => {
     const activeSlide = slides[index] ?? null;
     const body = document.body;
 
-    body.classList.toggle(
-      "NstSl_vdo",
-      activeSlide?.classList.contains("NstSl_li-vdo")
-    );
+    if (activeSlide?.classList.contains("NstSl_li-vdo")) {
+      body.classList.add("NstSl_vdo");
+    } else {
+      body.classList.remove("NstSl_vdo");
+    }
   };
   const handleTimeout = (index) => {
     const allSwiperSlides = document.querySelectorAll(".swiper-slide");
@@ -119,14 +120,24 @@ const Content = (props: { slideData: any }) => {
     console.log("swiper initialized");
     setTotalSlides(swiper.slides.length);
     const slides = document.querySelectorAll(".swiper-slide");
+
     if (slides.length > 0) {
+      const body = document.body;
       slides.forEach((slide, index) => {
+        if (index === 0) {
+          if (slide.classList.contains("NstSl_li-vdo")) {
+            body.classList.add("NstSl_vdo");
+          } else {
+            body.classList.remove("NstSl_vdo");
+          }
+        }
         timeoutIDs[index] = setTimeout(() => {
           handleTimeout(index);
         }, 0);
       });
     }
   };
+
   const playActiveSlideVideo = (swiper) => {
     const activeSlide = swiper.slides[swiper.activeIndex];
     const activeSlideVideo = activeSlide?.querySelector("video");
@@ -240,6 +251,7 @@ const Content = (props: { slideData: any }) => {
                   }}
                   onInit={(swiper) => {
                     initSwiper(swiper);
+                    updateSlideCount(swiper);
                     playActiveSlideVideo(swiper);
                   }}
                   onSlideChange={(swiper) => {
@@ -264,9 +276,10 @@ const Content = (props: { slideData: any }) => {
                 >
                   {/* <div className="swiper-container NstSl_rw"> */}
                   {/* <div className="swiper-wrapper NstSl_ul"> */}
-                  { props.slideData.results.map((item, index) => {
+                  {props.slideData.results.map((item, index) => {
                     const dataIndex = iterator.next().value;
                     const isActive = activeIndex === dataIndex;
+
                     const d = item;
                     const slides: React.ReactNode[] = [];
 
